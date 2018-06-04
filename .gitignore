@@ -1,0 +1,27 @@
+# IDEs and editors
+/.idea
+
+# dependencies
+/node_modules
+
+# compiled output
+/dist
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+*/*.map
+/dev_data

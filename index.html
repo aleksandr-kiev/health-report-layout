@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>GetPatient - My ASP.NET Application</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="./styles/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <form action="/Account/LogOff" class="navbar-right" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="qBkl6iTvwRsd15Okujv7qkcuKNquWIZPASbyDmbAwm2ZcUG2ywiCcOm6IQPRTVIIw_Z81xqn6azFsQRE1I4AmDD5fKZvmkfkR89dacxpyXoUmsE-U9OJU7wTDXm1R4h5LtGxI3VMQqabV3E7a2yzWg2" /><ul class="nav navbar-nav navbar-right" style=" right: 0;left: auto;color: #777777;float:right">
+                <li style="display:inline;">
+                    <a href="/Manage" title="Manage">Hello Elmer@yopmail.com!</a>
+                </li>
+                <li style="display:inline;"><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a></li>
+            </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container body-content">
+
+
+
+    <div class="container container-top">
+        <div class="logo">
+            <img class="logo_logo" src="./fonts/bs_logo.png">
+        </div>
+        <header class="header">
+            <section class="header-section">
+                <div class="section-row">
+                    <p class="row-label">Healthcare Provider:</p>
+                </div>
+                <div class="section-row">
+                    <p class="row-label">Provider Address:</p>
+                </div>
+                <div class="section-row section-row_float-bottom">
+                    <p class="row-label">Provider Phone:</p>
+                </div>
+            </section>
+            <section class="header-section">
+                <div class="section-row section-row-value">
+                    <p class="row-label">The Brain Tree</p>
+                </div>
+                <div class="section-row section-row-value">
+                    <p class="row-label">656 Back Street</p>
+                </div>
+                <div class="section-row section-row-value">
+                    <p class="row-label">Bayside, SA</p>
+                </div>
+                <div class="section-row section-row-value">
+                    <p class="row-label">9085632365</p>
+                </div>
+            </section>
+
+            <section class="header-section">
+                <div class="section-row">
+                    <p class="row-label">Date of Assessment:</p>
+                </div>
+                <div class="section-row">
+                    <p class="row-label">Lab Processing Date:</p>
+                </div>
+                <div class="section-row">
+                    <p class="row-label">Kit Number:</p>
+                </div>
+                <div class="section-row">
+                    <p class="row-label">Patient Name:</p>
+                </div>
+            </section>
+            <section class="header-section">
+                <div class="section-row section-row-value">
+                    <p class="row-label">1/9/2017 12:00:00 AM</p>
+                </div>
+                <div class="section-row section-row-value">
+                    <p class="row-label">1/28/2017 12:00:00 AM</p>
+                </div>
+                <div class="section-row section-row-value">
+                    <p class="row-label">KW89563</p>
+                </div>
+                <div class="section-row section-row-value">
+                    <p class="row-label">Elmer Herring</p>
+                </div>
+            </section>
+        </header>
+        <div class="brain-span-box">
+            <p class="brain-span-title">
+                BrainSpan&trade; Cell Health Assessment
+            </p>
+            <p class="brain-span-sub-title">
+                All diseases are disturbances at the cellular level.
+                To treat disease, we must understand its cause.
+                To understand the cause of a disease, we must understand
+                the alterations that occur at the level
+                of individual cells. – Yale School of Medicine
+            </p>
+            <p class="brain-span-content-item brain-span-content-item-first">
+                Your BrainSpan results provide you with some of the most important n
+                umbers in determining the health of your cells. The
+                health of your cells dictate the health and function of
+                your entire brain and body. This report quantifies specific
+                nutrients in
+                your cells called essential fatty acids (EFAs). These fatty
+                acids have many important roles in protecting and optimizing the
+                health of your brain and body. Your brain is 60% fat and most
+                of that is from an Omega-3 fatty acid called DHA. DHA
+                promotes new neuron growth – a process called neurogenesis that
+                should continue throughout adulthood. Omega-3 and
+                Omega-6 fatty acids also regulate your metabolism and inflammation
+                throughout your body.
+            </p>
+            <p class="brain-span-content-item">
+                Most Americans have major imbalances driven by dietary, genetic,
+                and cultural factors. These imbalances largely go
+                unrecognized and increase your risk of many preventable chronic
+                diseases such as dementia and heart disease. A recent
+                study by Harvard School of Public Health linked these fatty acid
+                imbalances to over 50 diseases contributing to 96,000
+                preventable deaths per year. Without measuring and tracking, you
+                are in the dark when it comes to the health of your
+                cells – the foundational building blocks of your entire brain and body.
+            </p>
+            <p class="brain-span-content-item brain-span-content-item-last">
+                Additionally, this assessment measures the functional
+                performance of your brain cells (neurons). You performed several
+                cognitive challenges that compared your memory, attention, and
+                processing speed to a carefully screened control group of
+                your same age and gender using the Brain Resource International
+                Database® (the world’s largest, standardized, normative
+                brain health database). This provides you with a brain function baseline.
+                Tracking your scores annually can provide you with
+                early detection of small changes that may be quickly improved with
+                nutritional and lifestyle interventions.
+            </p>
+            <p class="brain-span-trajectory-index">
+                Your BrainSpan Trajectory Index*
+            </p>
+            <p class="brain-span-trajectory-index-footnote">
+                *Your BrainSpan Trajectory Index is based on the results from your blood cell test and brain function assessment. Each score in this
+                report has been weighted based on relevant scientific literature regarding age-related cell degeneration and cognitive decline.
+                Research shows that maintaining your scores in the "green zone" lowers your risk of cognitive decline and helps prevent chronic
+                inflammatory diseases like Alzheimer's Disease and heart disease.
+            </p>
+            <div id="brainSpan" class="brain-span-result-box">
+                <div class="slider-pointer-mobile"></div>
+                <img class="result-image" src="./fonts/life.png">
+                <div class="result-slider-box">
+                    <img class="slider-pointer" src="./fonts/pointer-white-border.png">
+                    <div class="slider-pointer-box"></div>
+                    <p class="slider-title">you<br>are<br>here</p>
+                    <p class="slider-title slider-title-mobile">
+                        your<br>index
+                    </p>
+                    <p class="slider-score">4.1</p>
+                    <p class="slider-best-score">10 is best</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-box">
+            <div id="omega3General" class="test-box">
+                <div class="test-box__background"></div>
+                <div class="test-box__icon-box">
+                    <img class="icon-box__icon" src="./fonts/molecules.png">
+                </div>
+                <div class="test-box__label-box">
+                    <p class="label-box__label label-box__item">
+                        Omega-3 Index
+                    </p>
+                    <p class="label-box__sub-label label-box__item">
+                        % of EPA & DHA in your cells
+                    </p>
+                </div>
+                <div class="test-box__scale-box">
+                    <div class="scale-box__levels">
+                        <p class="levels__item">0%</p>
+                        <p class="levels__item">4%</p>
+                        <p class="levels__item">8%</p>
+                        <p class="levels__item">12%+</p>
+                    </div>
+                    <div class="scale-box__scale">
+                        <div class="scale__pointer"></div>
+                    </div>
+                    <div class="scale__interpretation">
+                        <p class="interpretation__item">
+                            Deficient
+                        </p>
+                        <p class="interpretation__item">
+                            Insufficient
+                        </p>
+                        <p class="interpretation__item">
+                            Sufficient
+                        </p>
+                        <p class="interpretation__item">
+                            Optimal
+                        </p>
+                    </div>
+                </div>
+                <div class="test-box__score-box">
+                    <p class="score__item score__item_top" style="margin-top: 20px;">
+                        your
+                    </p>
+                    <p class="score__item">
+                        score
+                    </p>
+                    <p class="score__item score__item-value">
+                        21%
+                    </p>
+                </div>
+            </div>
+            <div class="test-explanation-box">
+                <p class="test-explanation__label">
+                    your omega-3 index:
+                </p>
+                <p class="test-explanation__part">
+                    The human brain is nearly 60 percent fat with the majority being Omega-3 fatty acids. These are the building blocks of
+                    the brain and are crucial molecules that determine the brain's integrity and ability to perform. Omega-3s cannot be
+                    made by your body, so it is critical to obtain them by eating fish or taking fish oil. However, when it comes to Omega3s,
+                    the most important factor is how much is being absorbed by your blood cells.
+                </p>
+                <p class="test-explanation__part">
+                    Consistently measuring your Omega-3 Index is the only way to maintain optimal levels. An Omega-3 Index over 8% is
+                    associated with improved memory, attention, learning, mood staibility, faster recovery from concussion as well as
+                    lower anxiety, depression, and inflammation. Additionally, tracking your Omega-3 Index over time is one of the most
+                    important ways to help prevent alzheimer's disease, cognitive decline, and cardiovascular disease. Omega-3s are to
+                    your brain cells what calcium is to your bones; or what protein is to your muscles.
+                </p>
+            </div>
+
+            <div class="test-explanation-box test-explanation-box-second">
+                <p class="test-explanation__label">
+                    research & associated conditions:
+                </p>
+                <p class="test-explanation__part">
+                    The graph below shows how your Omega-3 Index compares to current research studies.
+                </p>
+            </div>
+            <div class="test-graph-box">
+                <div class="graph__lower graph__side">
+                    <img class="lower__img side__img" src="./fonts/purpleArea.png">
+                    <div class="lower__reserches-box side__reserches-box">
+                        <p class="reserches__label">
+                            Research has associated<br>
+                            <span>lower</span> Omega-3 Index Scores
+                        </p>
+                        <p class="researches__item">
+                            Higher Risk of Dementia& Stroke
+                            <span class="item-small">
+                            [<a href="#ref_1" class="item-anchor">1,</a>
+                            <a href="#ref_2" class="item-anchor">2,</a>
+                            <a href="#ref_3" class="item-anchor">3</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            Decreased Short-Term Memory
+                            <span class="item-small">
+                            [<a href="#ref_4" class="item-anchor">4,</a>
+                            <a href="#ref_5" class="item-anchor">5</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            ADHD & Slower Learning
+                            <span class="item-small">
+                            [<a href="#ref_6" class="item-anchor">6,</a>
+                            <a href="#ref_7" class="item-anchor">7,</a>
+                            <a href="#ref_8" class="item-anchor">8</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            Increased Stress & Anxiety
+                            <span class="item-small">
+                            [<a href="#ref_9" class="item-anchor">9,</a>
+                            <a href="#ref_10" class="item-anchor">10,</a>
+                            <a href="#ref_11" class="item-anchor">11</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="graph__pointer">
+                    <img class="pointer__circle" src="./fonts/deficient.png">
+                    <img id="omega3Graph" class="pointer__pointer" src="./fonts/pointer.png">
+                    <div class="pointer__results-box">
+                        <p class="result__item">
+                            Your
+                        </p>
+                        <p class="result__item">
+                            Omega-3
+                        </p>
+                        <p class="result__item">
+                            Index
+                        </p>
+                    </div>
+                </div>
+                <div class="graph__higher graph__side">
+                    <img class="higher__img side__img" src="./fonts/greenArea.png">
+                    <div class="higher__reserches-box side__reserches-box">
+                        <p class="reserches__label">
+                            Research has associated<br>
+                            <span>higher</span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Up to 47% Lower Risk of Dementia
+                            <span class="item-small">
+                            [<a href="#ref_1" class="item-anchor">1</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"> </span>
+                            Improved Short-TermMemory
+                            <span class="item-small">
+                            [<a href="#ref_4" class="item-anchor">4,</a>
+                            <a href="#ref_5" class="item-anchor">5</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Better Focus& Learning at School
+                            <span class="item-small">
+                            [<a href="#ref_6" class="item-anchor">6,</a>
+                            <a href="#ref_7" class="item-anchor">7,</a>
+                            <a href="#ref_8" class="item-anchor">8</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Improved Mood & Lower Anxiety
+                            <span class="item-small">
+                            [<a href="#ref_9" class="item-anchor">9,</a>
+                            <a href="#ref_10" class="item-anchor">10,</a>
+                            <a href="#ref_11" class="item-anchor">11</a>]
+                        </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="test-recommendations-box">
+                <div class="recommendations-label-box">
+                    <p class="recommendations__label">
+                        personalized recommendations:
+                    </p>
+                    <p class="recommendations__sub-label">
+                        To achieve an Omega-3 Index in the optimal green zone in 3 months, you will need to do one of the following:
+                    </p>
+                </div>
+                <div class="recommendations-items-box recommendations-box-rows">
+                    <div class="recommendations__first-row">
+                        <div class="items__item">
+                            <img class="item-icon item-small-icon" src="./fonts/salmon.png">
+                            <p class="item-explanation">
+                                Eat a 3 oz. serving of oily fish (Salmon,
+                                Herring, Bluefin) at least 11 times per
+                                week
+                            </p>
+                        </div>
+                        <div class="items__divider-box">
+                            <div class="divider-circle">
+                                <p class="divider-or">
+                                    or
+                                </p>
+                            </div>
+                        </div>
+                        <div class="items__item">
+                            <img class="item-icon" src="./fonts/medicine.png">
+                            <p class="item-explanation">
+                                Take a high quality Omega-3
+                                supplement with 2,500 milligrams of
+                                combined EPA & DHA per day
+                            </p>
+                        </div>
+                    </div>
+                    <div class="recommendations__second-row">
+                        <p class="recommendation-explanation-or">
+                            Ask your doctor to recommend a quality Omega-3 supplement that has demonstrated a high level of cellular absorption.
+                            The most important factor is how much EPA and DHA is absorbed into your blood cells. How it gets there (fish or
+                            supplements) really doesn't matter, as long as its absorbed. ONLY choose high quality Omega-3 supplements with both
+                            EPA & DHA (from fish). Omega-3 supplements with ALA (from plants) will have little effect improving your cell health or
+                            your Omega-3 Index. See Appendix A of this report for information on how to choose quality Omega-3 supplements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content-box">
+            <div id="cellInflammationGeneral" class="test-box">
+                <div class="test-box__background"></div>
+                <div class="test-box__icon-box">
+                    <img class="icon-box__icon" src="./fonts/fire.png">
+                </div>
+                <div class="test-box__label-box">
+                    <p class="label-box__label label-box__item">
+                        Cell Inflammation Balance
+                    </p>
+                    <p class="label-box__sub-label label-box__item">
+                        Omega-6 (AA) to Omega-3 (EPA) Ratio
+                    </p>
+                </div>
+                <div class="test-box__scale-box">
+                    <div class="scale-box__levels">
+                        <p class="levels__item">>16:1</p>
+                        <p class="levels__item">11:1</p>
+                        <p class="levels__item">6:1</p>
+                        <p class="levels__item">1:1</p>
+                    </div>
+                    <div class="scale-box__scale">
+                        <div class="scale__pointer"></div>
+                    </div>
+                    <div class="scale__interpretation">
+                        <p class="interpretation__item">
+                            Inflammatory
+                        </p>
+                        <p class="interpretation__item">
+                            Moderate Risk
+                        </p>
+                        <p class="interpretation__item">
+                            Optimal
+                        </p>
+                    </div>
+                </div>
+                <div class="test-box__score-box">
+                    <p class="score__item score__item_top" style="margin-top: 20px;">
+                        your
+                    </p>
+                    <p class="score__item">
+                        score
+                    </p>
+                    <p class="score__item score__item-value">
+                        17.1
+                    </p>
+                </div>
+            </div>
+            <div class="test-explanation-box">
+                <p class="test-explanation__label">
+                    your cell inflammation balance:
+                </p>
+                <p class="test-explanation__part">
+                    The majority of people in the United States have major imbalances in fatty acids due to the way we eat and grow our
+                    food. We have a significant deficiency of Omega-3s (from fish) in our diet and a significant excess of Omega-6s
+                    (from corn, soy, vegetable oils, and processed foods).
+                </p>
+                <p class="test-explanation__part">
+                    The fatty acids in your cell membrane are a reflection of the average fatty acids in your diet over the last 90 days.
+                    However, Omega-6s tend to increase inflammation whereas Omega-3s tend to decrease inflammation. Balancing
+                    these fatty acids is foundational to properly regulating your body's inflammatory response.
+                </p>
+                <p class="test-explanation__part">
+                    Everyone should track their dietary balance of pro-inflammatoryOmega-6s to anti-inflammatory Omega-3s. A ratio
+                    of 6 or less Omega-6s to every 1 Omega-3 is essential to properly balancing inflammation, modulating pain
+                    receptors, and regulating immune system function.
+                </p>
+            </div>
+            <div class="test-explanation-box test-explanation-box-second">
+                <p class="test-explanation__label">
+                    research & associated conditions:
+                </p>
+                <p class="test-explanation__part">
+                    The graph below shows how your AA (Omega-6) to EPA (Omega-3) Ratio compares to current research studies.
+                </p>
+            </div>
+            <div class="test-graph-box">
+                <div class="graph__lower graph__side">
+                    <img class="lower__img side__img" src="./fonts/purpleArea.png">
+                    <div class="lower__reserches-box side__reserches-box">
+                        <p class="reserches__label">
+                            Research has associated a<br>
+                            <span>higher</span>
+                        </p>
+                        <p class="researches__item">
+                            High Inflammatory Response
+                            <span class="item-small">
+                            [<a href="#ref_12" class="item-anchor">12,</a>
+                            <a href="#ref_13" class="item-anchor">13,</a>
+                            <a href="#ref_14" class="item-anchor">14,</a><a href="#ref_15" class="item-anchor">15</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            Increased Pain Response
+                            <span class="item-small">
+                            [<a href="#ref_16" class="item-anchor">16,</a>
+                            <a href="#ref_17" class="item-anchor">17</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            Hormone/Immune Dysfunction
+                            <span class="item-small">
+                            [<a href="#ref_18" class="item-anchor">18</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            Higher Risk of Cancer/Disease
+                            <span class="item-small">
+                            [<a href="#ref_21" class="item-anchor">21,</a>
+                            <a href="#ref_22" class="item-anchor">22,</a>
+                            <a href="#ref_23" class="item-anchor">23</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="graph__pointer">
+                    <img class="pointer__circle" src="./fonts/inflammatory.png">
+                    <img id="cellInflammationGraph" class="pointer__pointer" src="./fonts/pointer.png">
+                    <div class="pointer__results-box">
+                        <p class="result__item">
+                            Your
+                        </p>
+                        <p class="result__item">
+                            AA to EPA
+                        </p>
+                        <p class="result__item">
+                            Ratio
+                        </p>
+                    </div>
+                </div>
+                <div class="graph__higher graph__side">
+                    <img class="higher__img side__img" src="./fonts/greenArea.png">
+                    <div class="higher__reserches-box side__reserches-box">
+                        <p class="reserches__label">
+                            Research has associated a<br>
+                            <span>lower</span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Lower Inflammation Levels
+                            <span class="item-small">
+                            [<a href="#ref_12" class="item-anchor">12,</a>
+                            <a href="#ref_13" class="item-anchor">13,</a>
+                            <a href="#ref_14" class="item-anchor">14,</a>
+                            <a href="#ref_15" class="item-anchor">15</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"> </span>
+                            Reduced Chronic Pain
+                            <span class="item-small">
+                            [<a href="#ref_16" class="item-anchor">16,</a>
+                            <a href="#ref_17" class="item-anchor">17</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Resilience to Concussion
+                            <span class="item-small">
+                            [<a href="#ref_19" class="item-anchor">19,</a>
+                            <a href="#ref_20" class="item-anchor">20</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Lower Risk of Heart Attack
+                            <span class="item-small">
+                            [<a href="#ref_21" class="item-anchor">21,</a>
+                            <a href="#ref_22" class="item-anchor">22,</a>
+                            <a href="#ref_23" class="item-anchor">23</a>]
+                        </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="test-recommendations-box">
+                <div class="recommendations-label-box">
+                    <p class="recommendations__label">
+                        recommendations:
+                    </p>
+                    <p class="recommendations__sub-label">
+                        To improve your Cell Inflammation Balance within 3 months, you will need to do the following:
+                    </p>
+                </div>
+                <div class="recommendations-items-box">
+                    <div class="items__item">
+                        <img class="item-icon" src="./fonts/medicine.png">
+                        <p class="item-explanation">
+                            Nutritional supplements
+                            like boswellia serrata
+                            and curcumin inhibit
+                            Omega-6 inflammatory
+                            pathways and help
+                            balance inflammation.
+                        </p>
+                    </div>
+                    <div class="items__item">
+                        <div class="items__divider"></div>
+                        <img class="item-icon" src="./fonts/hamburger.png">
+                        <p class="item-explanation">
+                            Processed foods are
+                            high in pro-inflammatory
+                            Omega-6s. Reducing
+                            these foods will help
+                            balance your
+                            inflammation ratio.
+                        </p>
+                    </div>
+                    <div class="items__item">
+                        <div class="items__divider"></div>
+                        <img class="item-icon item-small-icon" src="./fonts/grass-leaves-silhouette.png">
+                        <p class="item-explanation">
+                            Grass fed meat is
+                            higher in Omega-3s.
+                            Grain fed meat is high
+                            in Omega-6s. Eating
+                            grass fed meat will
+                            improve your ratio.
+                        </p>
+                    </div>
+                    <div class="items__item">
+                        <div class="items__divider"></div>
+                        <img class="item-icon" src="./fonts/olive-oil.png">
+                        <p class="item-explanation">
+                            Replace commonly
+                            used vegetable oils with
+                            healthier alternatives
+                            such as olive,
+                            macadamia nut, or hioleic
+                            sunflower oils.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content-box">
+            <div id="carbBurRateGeneral" class="test-box">
+                <div class="test-box__background"></div>
+                <div class="test-box__icon-box">
+                    <img class="icon-box__icon" src="./fonts/biohazard.png">
+                </div>
+                <div class="test-box__label-box">
+                    <p class="label-box__label label-box__item">
+                        Carb Burn Rate Index
+                    </p>
+                    <p class="label-box__sub-label label-box__item">
+                        Cellular Palmitic Acid Level
+                    </p>
+                </div>
+                <div class="test-box__scale-box">
+                    <div class="scale-box__levels">
+                        <p class="levels__item">29%</p>
+                        <p class="levels__item">25%</p>
+                        <p class="levels__item">21%</p>
+                        <p class="levels__item">17%</p>
+                    </div>
+                    <div class="scale-box__scale">
+                        <div class="scale__pointer"></div>
+                    </div>
+                    <div class="scale__interpretation">
+                        <p class="interpretation__item">
+                            Excessive
+                        </p>
+                        <p class="interpretation__item">
+                            Optimal
+                        </p>
+                    </div>
+                </div>
+                <div class="test-box__score-box">
+                    <p class="score__item score__item_top" style="margin-top: 20px;">
+                        your
+                    </p>
+                    <p class="score__item">
+                        score
+                    </p>
+                    <p class="score__item score__item-value">
+                        21%
+                    </p>
+                </div>
+            </div>
+            <div class="test-explanation-box">
+                <p class="test-explanation__label">
+                    your carb burn rate:
+                </p>
+                <p class="test-explanation__part">
+                    Excessive palmitic acid (usually from a diet high in simple carbohydrates) is associated with fatty acid alterations within
+                    the cell that can suppress the proper signaling of hormones critical to proper cell-to-cell signaling. Maintaining optimal
+                    palmitic acid levels helps normalize leptin and insulin signaling, which helps regulate your metabolism, increases your
+                    energy, and improves neurotransmitter communication.
+                </p>
+                <p class="test-explanation__part">
+                    Your brain communicates with your fat cells throughout your body using leptin signaling. Similar to how a thermostat
+                    turns on and off the air to keep the temperature in your house stable, leptin communicates to your cells to burn or store
+                    fat.
+                </p>
+                <p class="test-explanation__part">
+                    When proper leptin signaling occurs, the brain properly stimulates a feeling of “full”, increases energy, and starts
+                    burning body fat. When leptin signaling is suppressed, the brain stays in “hungry” mode, lowers energy output, and
+                    stores body fat.
+                </p>
+            </div>
+            <div class="test-explanation-box test-explanation-box-second">
+                <p class="test-explanation__label">
+                    research & associated conditions:
+                </p>
+                <p class="test-explanation__part">
+                    The graph below shows how your palmitic acid level may be affecting your leptin signaling.
+                </p>
+            </div>
+            <div class="test-graph-box">
+                <div class="graph__lower graph__side">
+                    <img class="lower__img side__img" src="./fonts/purpleArea.png">
+                    <div class="lower__reserches-box side__reserches-box">
+                        <p class="reserches__label">
+                            Research has associated <span>higher</span><br>
+                            palmitic acid with decreased leptin
+                        </p>
+                        <p class="researches__item">
+                            Increased Feelingof Hunger
+                            <span class="item-small">
+                            [<a href="#ref_24" class="item-anchor">24</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            Lower Energy Levels
+                            <span class="item-small">
+                            [<a href="#ref_25" class="item-anchor">25,</a>
+                            <a href="#ref_26" class="item-anchor">26,</a>
+                            <a href="#ref_27" class="item-anchor">27</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            Increased Storage of Body Fat
+                            <span class="item-small">
+                            [<a href="#ref_26" class="item-anchor">26</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                        <p class="researches__item">
+                            Risk of Metabolic Syndrome
+                            <span class="item-small">
+                            [<a href="#ref_25" class="item-anchor">25,</a>
+                            <a href="#ref_27" class="item-anchor">27,</a>
+                            <a href="#ref_28" class="item-anchor">28</a>]
+                        </span>
+                            <span class="item__dot"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="graph__pointer">
+                    <img class="pointer__circle" src="./fonts/excessive.png">
+                    <img id="carbBurRateGraph" class="pointer__pointer" src="./fonts/pointer.png">
+                    <div class="pointer__results-box">
+                        <p class="result__item">
+                            Your
+                        </p>
+                        <p class="result__item">
+                            palmitic acid
+                        </p>
+                        <p class="result__item">
+                            level
+                        </p>
+                    </div>
+                </div>
+                <div class="graph__higher graph__side">
+                    <img class="higher__img side__img" src="./fonts/greenArea.png">
+                    <div class="higher__reserches-box side__reserches-box">
+                        <p class="reserches__label">
+                            Research has associated <span>lower</span><br>
+                            palmitic acid with improved leptin
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Proper Senstivity to Feeling Full
+                            <span class="item-small">
+                            [<a href="#ref_24" class="item-anchor">24</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"> </span>
+                            Increased Energy Levels
+                            <span class="item-small">
+                            [<a href="#ref_24" class="item-anchor">24,</a>
+                            <a href="#ref_25" class="item-anchor">25,</a>
+                            <a href="#ref_26" class="item-anchor">26</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Optimal Metabolism/Fat Burning
+                            <span class="item-small">
+                            [<a href="#ref_26" class="item-anchor">26</a>]
+                        </span>
+                        </p>
+                        <p class="researches__item">
+                            <span class="item__dot"></span>
+                            Normalized Leptin & Insulin
+                            <span class="item-small">
+                            [<a href="#ref_25" class="item-anchor">25,</a>
+                            <a href="#ref_27" class="item-anchor">27,</a>
+                            <a href="#ref_28" class="item-anchor">28</a>]
+                        </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="test-recommendations-box">
+                <div class="recommendations-label-box">
+                    <p class="recommendations__label">
+                        recommendations:
+                    </p>
+                    <p class="recommendations__sub-label">
+                        Congratulations - your Carb Burn Rate Index is in the optimal green zone!
+                    </p>
+                </div>
+                <div class="recommendations-items-box">
+                    <div class="items__item">
+                        <img class="item-icon" src="./fonts/medicine.png">
+                        <p class="item-explanation">
+                            Supplements such as
+                            coenzyme Q10 &
+                            chromium encourage
+                            healthy blood sugar by
+                            improving carbohydrate
+                            metabolism
+                        </p>
+                    </div>
+                    <div class="items__item">
+                        <div class="items__divider"></div>
+                        <img class="item-icon" src="./fonts/cola-can.png">
+                        <p class="item-explanation">
+                            Reduce your
+                            consumption of simple
+                            carbs (sugars) so they
+                            don’t convert to palmitic
+                            acid and store up in
+                            your cells.
+                        </p>
+                    </div>
+                    <div class="items__item">
+                        <div class="items__divider"></div>
+                        <img class="item-icon" src="./fonts/spoon-and-fork-crossed.png">
+                        <p class="item-explanation">
+                            Eat smaller, low
+                            glycemic, high protein
+                            meals more frequently
+                            throughout the day to
+                            stabilize your blood
+                            sugar production.
+                        </p>
+                    </div>
+                    <div class="items__item">
+                        <div class="items__divider"></div>
+                        <img class="item-icon" src="./fonts/running-man.png">
+                        <p class="item-explanation">
+                            Increase exercise so
+                            that your body uses
+                            more calories and does
+                            not convert as much
+                            glucose to palmitic acid
+                            for storage.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content-box">
+            <div id="memoryCapacityGeneral" class="test-box">
+                <div class="test-box__background"></div>
+                <div class="test-box__icon-box">
+                    <img class="icon-box__icon" src="./fonts/tap.png">
+                </div>
+                <div class="test-box__label-box">
+                    <p class="label-box__label label-box__item">
+                        Memory Capacity
+                    </p>
+                    <p class="label-box__sub-label label-box__item">
+                        Working & Recognition Memory Tests
+                    </p>
+                </div>
+                <div class="test-box__scale-box">
+                    <div class="scale-box__levels">
+                        <p class="levels__item">1</p>
+                        <p class="levels__item">2</p>
+                        <p class="levels__item">3</p>
+                        <p class="levels__item">4</p>
+                        <p class="levels__item">5</p>
+                        <p class="levels__item">6</p>
+                        <p class="levels__item">7+</p>
+                    </div>
+                    <div class="scale-box__scale">
+                        <div class="scale__pointer"></div>
+                    </div>
+                    <div class="scale__interpretation">
+                        <p class="interpretation__item">
+                            Poor Range
+                        </p>
+                        <p class="interpretation__item">
+                            Low Range
+                        </p>
+                        <p class="interpretation__item">
+                            Expected Range
+                        </p>
+                    </div>
+                </div>
+                <div class="test-box__score-box">
+                    <p class="score__item score__item_top" style="margin-top: 20px;">
+                        your
+                    </p>
+                    <p class="score__item">
+                        score
+                    </p>
+                    <p class="score__item score__item-value">
+                        5.5
+                    </p>
+                </div>
+            </div>
+            <div class="test-advices">
+                <div class="advices__item advices__means">
+                    <p class="means__label">
+                        What This Score Means to You
+                    </p>
+                    <div class="means__value-box">
+                        <p class="means__value">
+                            On the memory capacity test, you scored a 5.5 out
+                            of 10 based on your age and gender. This is
+                            considered to be in the EXPECTED range.
+                        </p>
+                        <p class="means__value">
+                            Working memory is the process whereby your brain
+                            is able to temporarily store information in the
+                            moment and recall it when you need it.
+                        </p>
+                        <p class="means__value">
+                            Poor working memory may be associated with
+                            nutritional deficits in the cells of the hippocampus –
+                            the part of the brain that stores memories.
+                        </p>
+                        <p class="means__value">
+                            Poor working memory scores may suggest brain cell
+                            nutrient deficiencies, inflammation, insufficient
+                            neuronal connections, or poor quality sleep.
+                        </p>
+                    </div>
+                </div>
+                <div class="advices__item advices__improve">
+                    <p class="improve__label">
+                        How to Improve Your Memory Capacity
+                    </p>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Getting all three of your blood cell biomarkers
+                            into the green zone can optimize your working memory.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Phosphatidylserine has been shown to enhance memory
+                            for words, faces, names, and numbers, and supports
+                            brain health across the lifespan.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Quality sleep is necessary to consolidate memories
+                            so that they can be recalled in the future.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Vitamin D – research shows that memory declines up
+                            to 300% faster in individuals with low levels of
+                            vitamin D. Only use a quality supplement with high
+                            cellular absorption.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Aerobic exercise has been shown to boost the size
+                            of the hippocampus, the brain area involved in
+                            memory.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Sage is excellent for better brain functioning
+                            and boosting memory recall.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="sustainedAttentionGeneral" class="test-box text-box_second">
+                <div class="test-box__background"></div>
+                <div class="test-box__icon-box">
+                    <img class="icon-box__icon" src="./fonts/target.png">
+                </div>
+                <div class="test-box__label-box">
+                    <p class="label-box__label label-box__item">
+                        Sustained Attention
+                    </p>
+                    <p class="label-box__sub-label label-box__item">
+                        Sustained Attention Tests
+                    </p>
+                </div>
+                <div class="test-box__scale-box">
+                    <div class="scale-box__levels">
+                        <p class="levels__item">1</p>
+                        <p class="levels__item">2</p>
+                        <p class="levels__item">3</p>
+                        <p class="levels__item">4</p>
+                        <p class="levels__item">5</p>
+                        <p class="levels__item">6</p>
+                        <p class="levels__item">7+</p>
+                    </div>
+                    <div class="scale-box__scale">
+                        <div class="scale__pointer"></div>
+                    </div>
+                    <div class="scale__interpretation">
+                        <p class="interpretation__item">
+                            Poor Range
+                        </p>
+                        <p class="interpretation__item">
+                            Low Range
+                        </p>
+                        <p class="interpretation__item">
+                            Expected Range
+                        </p>
+                    </div>
+                </div>
+                <div class="test-box__score-box">
+                    <p class="score__item score__item_top" style="margin-top: 20px;">
+                        your
+                    </p>
+                    <p class="score__item">
+                        score
+                    </p>
+                    <p class="score__item score__item-value">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="test-advices test-advices_second">
+                <div class="advices__item advices__means">
+                    <p class="means__label">
+                        What This Score Means to You
+                    </p>
+                    <div class="means__value-box">
+                        <p class="means__value">
+                            On the sustained attention test, you scored a 3
+                            out of 10 based on your age and gender. This is
+                            considered to be in the POOR range.
+                        </p>
+                        <p class="means__value">
+                            To efficiently sustain your attention and 'tune out'
+                            competing distractions, your brain must produce
+                            specific neurotransmitters. However, your brain
+                            requires adequate nutrients to create these
+                            neurotransmitters.
+                        </p>
+                        <p class="means__value">
+                            Attentional problems may be associated with
+                            deficiencies in the pre-frontal region of the brain,
+                            which controls selective attention, impulsivity, and
+                            motivation. These impairments may be caused from
+                            nutrient deficiencies, stress, or inflammation.
+                        </p>
+                    </div>
+                </div>
+                <div class="advices__item advices__improve">
+                    <p class="improve__label">
+                        How to Improve Your Sustained Attention
+                    </p>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Getting all three of your blood cell biomarkers into the green
+                            zone can optimize your sustained attention.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Consume a good amount of protein each day. Proteins
+                            contain the amino acids that your brain needs in order to
+                            create dopamine and improve attention.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Vitamin B6 with Magnesium supports attention by helping
+                            your brain cells to produce key neurotransmitters vital to
+                            sustaining attention.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Sleep quality and quantity is essential to sustained attention.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Zinc provides the brain with antioxidant protection and helps
+                            produce the sleep hormone melatonin. Zinc has consistently
+                            enhanced attention and behavior in clinical trials.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Cinnamon has been shown to help attention and it helps
+                            regulate blood sugar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content-box">
+            <div id="cognitiveFlexibilityGeneral" class="test-box">
+                <div class="test-box__background"></div>
+                <div class="test-box__icon-box">
+                    <img class="icon-box__icon" src="./fonts/refresh-arrows.png">
+                </div>
+                <div class="test-box__label-box">
+                    <p class="label-box__label label-box__item">
+                        Cognitive Flexibility
+                    </p>
+                    <p class="label-box__sub-label label-box__item">
+                        Switching of Attention Test
+                    </p>
+                </div>
+                <div class="test-box__scale-box">
+                    <div class="scale-box__levels">
+                        <p class="levels__item">1</p>
+                        <p class="levels__item">2</p>
+                        <p class="levels__item">3</p>
+                        <p class="levels__item">4</p>
+                        <p class="levels__item">5</p>
+                        <p class="levels__item">6</p>
+                        <p class="levels__item">7+</p>
+                    </div>
+                    <div class="scale-box__scale">
+                        <div class="scale__pointer"></div>
+                    </div>
+                    <div class="scale__interpretation">
+                        <p class="interpretation__item">
+                            Poor Range
+                        </p>
+                        <p class="interpretation__item">
+                            Low Range
+                        </p>
+                        <p class="interpretation__item">
+                            Expected Range
+                        </p>
+                    </div>
+                </div>
+                <div class="test-box__score-box">
+                    <p class="score__item score__item_top" style="margin-top: 20px;">
+                        your
+                    </p>
+                    <p class="score__item">
+                        score
+                    </p>
+                    <p class="score__item score__item-value">
+                        5.5
+                    </p>
+                </div>
+            </div>
+            <div class="test-advices">
+                <div class="advices__item advices__means">
+                    <p class="means__label">
+                        What This Score Means to You
+                    </p>
+                    <div class="means__value-box">
+                        <p class="means__value">
+                            On the cognitive flexibility test, you scored a 4 out of
+                            10 based on your age and gender. This is
+                            considered to be in the LOW range.
+                        </p>
+                        <p class="means__value">
+                            Cognitive flexibility is your capacity to rapidly adapt
+                            your thinking based on new information and not get
+                            stuck in compulsive behavior. Your brain must be
+                            able to reorganize itself by forming new neural
+                            connections.
+                        </p>
+                        <p class="means__value">
+                            Poor cognitive flexibility scores may be due to a
+                            decreased production of the neurotransmitters
+                            serotonin and GABA.
+                        </p>
+                    </div>
+                </div>
+                <div class="advices__item advices__improve">
+                    <p class="improve__label">
+                        How to Improve Cognitive Flexibility
+                    </p>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Getting all three of your blood cell biomarkers into the
+                            green zone can optimize your cognitive flexibility.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Meditation – research has shown that mindfulness
+                            meditation can significantly enhance cognitive flexibility.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Quality sleep is necessary to consolidate memories
+                            so that they can be recalled in the future.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Probiotics support gut microbiome function and optimize
+                            the production of neurotransmitters Serotonin and GABA,
+                            which help support cognitive flexibility.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            5-HTP is a metabolite naturally made in the brain, is
+                            converted to serotonin as needed to promote positive
+                            mood, relaxation, and quality sleep.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Vitamin B12 with Folate is essential for structural integrity of
+                            the brain and spinal cord. They produce neurotransmitters
+                            and key enzymes that improve overall cognitive skills.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="processingSpeedGeneral" class="test-box text-box_second">
+                <div class="test-box__background"></div>
+                <div class="test-box__icon-box">
+                    <img class="icon-box__icon" src="./fonts/speedometer.png">
+                </div>
+                <div class="test-box__label-box">
+                    <p class="label-box__label label-box__item">
+                        Processing Speed
+                    </p>
+                    <p class="label-box__sub-label label-box__item">
+                        Choice Reaction Speed Test
+                    </p>
+                </div>
+                <div class="test-box__scale-box">
+                    <div class="scale-box__levels">
+                        <p class="levels__item">1</p>
+                        <p class="levels__item">2</p>
+                        <p class="levels__item">3</p>
+                        <p class="levels__item">4</p>
+                        <p class="levels__item">5</p>
+                        <p class="levels__item">6</p>
+                        <p class="levels__item">7+</p>
+                    </div>
+                    <div class="scale-box__scale">
+                        <div class="scale__pointer"></div>
+                    </div>
+                    <div class="scale__interpretation">
+                        <p class="interpretation__item">
+                            Poor Range
+                        </p>
+                        <p class="interpretation__item">
+                            Low Range
+                        </p>
+                        <p class="interpretation__item">
+                            Expected Range
+                        </p>
+                    </div>
+                </div>
+                <div class="test-box__score-box">
+                    <p class="score__item score__item_top" style="margin-top: 20px;">
+                        your
+                    </p>
+                    <p class="score__item">
+                        score
+                    </p>
+                    <p class="score__item score__item-value">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="test-advices test-advices_second">
+                <div class="advices__item advices__means">
+                    <p class="means__label">
+                        What This Score Means to You
+                    </p>
+                    <div class="means__value-box">
+                        <p class="means__value">
+                            On the processing speed test, you scored a 7 out of
+                            10 based on your age and gender. This is
+                            considered to be in the EXPECTED range.
+                        </p>
+                        <p class="means__value">
+                            Processing speed is the pace at which you take in
+                            information, make sense of it and begin to respond.
+                            It has nothing to do with how smart you are -- just
+                            how fast you can take in and use information.
+                        </p>
+                        <p class="means__value">
+                            Slow processing speed is associated with inefficient
+                            connections in the brain's gray matter. These weak
+                            connections may be due to nutrient deficiencies in
+                            brain cells, limited production of vital neurotransmitters,
+                            chronic stress, lack of quality sleep, and toxins in your
+                            diet (such as refined sugars and processed foods).
+                        </p>
+                    </div>
+                </div>
+                <div class="advices__item advices__improve">
+                    <p class="improve__label">
+                        How to Improve Processing Speed
+                    </p>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Getting all three of your blood cell biomarkers into the green
+                            zone can optimize your processing speed.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Curcumin (Turmeric) keeps your brain sharp under pressure.
+                            It has also been shown to decrease plaques in the brain
+                            linked to Alzheimer’s disease.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            Ginkgo Biloba & Acetyl-L-Carnitine have been shown to
+                            enhance cognition in healthy individuals as well as those with
+                            age related cognitive impairment.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            L-Tyrosine can increase the production of neurotransmitters
+                            that are essential for the brain's functions such as processing
+                            speed, problem solving, and making decisions.
+                        </p>
+                    </div>
+                    <div class="improve__item">
+                        <p class="improve__item-symbol">&check;</p>
+                        <p class="improve__item-value">
+                            A recent study showed that one particular type of brain
+                            exercise - called “speed training” can increase processing
+                            speed and even significantly reduce the risk of developing
+                            dementia.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="summaryContainer">
+        <article class="article-description">
+            <p class="description-content">
+                Getting in the green zone increases your longevity and the quality of your life.
+                But green zone do not mean areas you should ignore, but areas you want to sustain,
+                and the re-check as your body's needs will change as you age. All of the
+                recommendations printed below and only a starting place for you and your
+                practitioner. Your practitioner may choose to modify or focus on a particular area
+                based on your clinical needs. Re-testing at 90 days from your first test is critical,
+                to ensure you are on the right track. Then every 6 months is ideal.
+            </p>
+        </article>
+        <div class="diagram-box">
+            <p class="diagram-label">Summary of Results & Recommendations</p>
+            <div class="diagram-header">
+                <div class="diagram-header_label-box">
+                    <p class="label-text">Test/Description</p>
+                    <img class="label-arrow" src="./fonts/triangle.png">
+                </div>
+                <div class="diagram-header_label-box">
+                    <p class="label-text">Score History</p>
+                    <img class="label-arrow" src="./fonts/triangle.png">
+                </div>
+                <div class="diagram-header_label-box">
+                    <p class="label-text">Current Score</p>
+                    <img class="label-arrow" src="./fonts/triangle.png">
+                </div>
+                <div class="diagram-header_label-box">
+                    <p class="label-text">Recommendations</p>
+                    <img class="label-arrow" src="./fonts/triangle.png">
+                </div>
+            </div>
+            <div class="diagram-dates">
+                <p class="dates_date">09/25/17</p>
+                <p class="dates_date">10/25/18</p>
+                <p class="dates_date">10/25/17</p>
+                <p class="dates_date">10/25/17</p>
+            </div>
+            <div class="diagram-item-box">
+                <div id="omega3" class="diagram-item">
+                    <div class="diagram-item-icon-box">
+                        <img class="diagram-item-icon" src="./fonts/molecules.png">
+                    </div>
+                    <div class="diagram-item-body">
+                        <div class="body-left-side">
+
+                        </div>
+                        <div class="body-description">
+                            <p class="description-item description-label">Omega-3 Index</p>
+                            <p class="description-item description-sub-label">% EPA/DHA in Cell Membrane</p>
+                            <p class="description-item">- Memory/Focus/Mood</p>
+                            <p class="description-item">- Risk of Dementia/Stroke/CVD</p>
+                            <p class="description-item">- Concussion Resilience</p>
+                        </div>
+                        <div class="body-score-history">
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item history-item-active">
+                                <div class="slider_pointer"></div>
+                            </div>
+                        </div>
+                        <div class="body_current-score">
+                            <div class="current_slider">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="slider_description">
+                                <p class="slider_description__item slider_description__item-value">5%</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">below</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">poor</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">range</p>
+                            </div>
+
+                        </div>
+                        <div class="body_recommendations  body_recommendations-or">
+                            <p class="recommendation-small-displays">recommendations</p>
+                            <div class="recommendation-or-top-row recommendation-or-row">
+                                <div class="recommendation_item">
+                                    <p class="item-label">Cod Liver Oil</p>
+                                    <p class="item-value">Pearl(s)/day: _________</p>
+                                </div>
+                                <div class="recommendation_item-or">
+                                    <p class="item-or">or</p>
+                                </div>
+                                <div class="recommendation_item">
+                                    <p class="item-label">Calamari Omega-3 Liquid</p>
+                                    <p class="item-value">Tsp(s)/day: _________</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-or-bottom-row recommendation-or-row recommendation-description">
+                                <p class="description_description">
+                                    Tuna Omega-3 Oil and Calamari Oil have demonstrated a high level of
+                                    cellular absorption. The most important factor is how much EPA and DHA is
+                                    absorbed into your blood cells.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="cellInflammation" class="diagram-item">
+                    <div class="diagram-item-icon-box">
+                        <img class="diagram-item-icon" src="./fonts/fire.png">
+                    </div>
+                    <div class="diagram-item-body">
+                        <div class="body-left-side">
+                        </div>
+                        <div class="body-description">
+                            <p class="description-item description-label">Cell Inflammation Balance</p>
+                            <p class="description-item description-sub-label">Omega-6 to Omega-3 Ratio</p>
+                            <p class="description-item">- Inflammatory Response</p>
+                            <p class="description-item">- Immune Function</p>
+                            <p class="description-item">- Pain Response</p>
+                        </div>
+                        <div class="body-score-history">
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item history-item-active">
+                                <div class="slider_pointer"></div>
+                            </div>
+                        </div>
+
+                        <div class="body_current-score">
+                            <div class="current_slider">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="slider_description">
+                                <p class="slider_description__item slider_description__item-value">17:1</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">below</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">poor</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">range</p>
+                            </div>
+
+                        </div>
+                        <div class="body_recommendations ">
+                            <p class="recommendation-small-displays">recommendations</p>
+                            <div class="recommendation_item">
+                                <p class="item-label">Boswellia Complex</p>
+                                <p class="item-value">1 Tablet: _________ times/day</p>
+                                <p class="item-description">
+                                    Block specific enzymes involved in
+                                    the metabolic pathway leading to
+                                    inflammation.*
+                                </p>
+                            </div>
+                            <div class="recommendation_item-vertical-divider"></div>
+                            <div class="recommendation_item">
+                                <p class="item-label">Cellular Vitality</p>
+                                <p class="item-value">Capsule(s)/day: _________</p>
+                                <p class="item-description">
+                                    Modulates the body's natural
+                                    inflammatory response function and
+                                    reduces free radical damage.*
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="carbBurRate" class="diagram-item">
+                    <div class="diagram-item-icon-box">
+                        <img class="diagram-item-icon" src="./fonts/biohazard.png">
+                    </div>
+                    <div class="diagram-item-body">
+                        <div class="body-left-side">
+                        </div>
+                        <div class="body-description">
+                            <p class="description-item description-label">Carb Burn Rate Index</p>
+                            <p class="description-item description-sub-label">Excess Palmitic Acid Levels</p>
+                            <p class="description-item">- Energy/Metabolism</p>
+                            <p class="description-item">- Fat Burning Management</p>
+                            <p class="description-item">- Risk of Metabolic Syndrome</p>
+                        </div>
+                        <div class="body-score-history">
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item history-item-active">
+                                <div class="slider_pointer"></div>
+                            </div>
+                        </div>
+
+                        <div class="body_current-score">
+                            <div class="current_slider">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="slider_description">
+                                <p class="slider_description__item slider_description__item-value">21%</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">below</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">poor</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">range</p>
+                            </div>
+
+                        </div>
+                        <div class="body_recommendations">
+                            <p class="recommendation-small-displays">recommendations</p>
+                            <div class="recommendation_item">
+                                <p class="item-label">Veg-E Complete Pro&trade;</p>
+                                <p class="item-value">Serving(s)/day: _________ </p>
+                                <p class="item-description">
+                                    Replace high carb processed foods
+                                    with a low-glycemic protein meal
+                                    replacement.*
+                                </p>
+
+                            </div>
+                            <div class="recommendation_item-vertical-divider"></div>
+                            <div class="recommendation_item">
+                                <p class="item-label">Diaplex&reg;</p>
+                                <p class="item-value">Capsule(s)/day: _________ with meal</p>
+                                <p class="item-description">
+                                    Encourages healthy blood sugar
+                                    with essential nutrients involved in
+                                    carbohydrate metabolism.*
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="memoryCapacity" class="diagram-item">
+                    <div class="diagram-item-icon-box">
+                        <img class="diagram-item-icon" src="./fonts/tap.png">
+                    </div>
+                    <div class="diagram-item-body">
+                        <div class="body-left-side">
+                        </div>
+                        <div class="body-description">
+                            <p class="description-item description-label">Memory Capacity</p>
+                            <p class="description-item description-item__without-sublabel">
+                                On the memory capacity test, you
+                                scored a 5.5 out of 10 based on your
+                                age and gender. This is considered to
+                                be in the EXPECTED range.
+                            </p>
+                        </div>
+                        <div class="body-score-history">
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item history-item-active">
+                                <div class="slider_pointer"></div>
+                            </div>
+                        </div>
+
+                        <div class="body_current-score">
+                            <div class="current_slider">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="slider_description">
+                                <p class="slider_description__item slider_description__item-value">5.5</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">below</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">poor</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">range</p>
+                            </div>
+
+                        </div>
+                        <div class="body_recommendations">
+                            <p class="recommendation-small-displays">recommendations</p>
+                            <div class="recommendation_item">
+                                <p class="item-label">Cataplex&reg; D</p>
+                                <p class="item-value">Tablet(s)/day: _________</p>
+                                <p class="item-description">
+                                    Research shows that memory
+                                    declines two to three times faster in
+                                    individuals with low levels.*
+                                </p>
+
+                            </div>
+                            <div class="recommendation_item-vertical-divider"></div>
+                            <div class="recommendation_item">
+                                <p class="item-label">OPC Synergy&reg;</p>
+                                <p class="item-value">Capsule(s)/day: _________</p>
+                                <p class="item-description">
+                                    OPC's have substantial antioxidant
+                                    activity that cross the blood-brain
+                                    barrier & improve oxygenation.*
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sustainedAttention" class="diagram-item">
+                    <div class="diagram-item-icon-box">
+                        <img class="diagram-item-icon" src="./fonts/target.png">
+                    </div>
+                    <div class="diagram-item-body">
+                        <div class="body-left-side">
+                        </div>
+                        <div class="body-description">
+                            <p class="description-item description-label">Sustained Attention</p>
+                            <p class="description-item description-item__without-sublabel">
+                                On the sustained attention test, you
+                                scored a 3 out of 10 based on your
+                                age and gender. This is considered to
+                                be in the POOR range.
+                            </p>
+                        </div>
+                        <div class="body-score-history">
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item history-item-active">
+                                <div class="slider_pointer"></div>
+                            </div>
+                        </div>
+
+                        <div class="body_current-score">
+                            <div class="current_slider">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="slider_description">
+                                <p class="slider_description__item slider_description__item-value">3</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">below</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">poor</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">range</p>
+                            </div>
+
+                        </div>
+                        <div class="body_recommendations ">
+                            <p class="recommendation-small-displays">recommendations</p>
+                            <div class="recommendation_item">
+                                <p class="item-label">Magnesium with B6</p>
+                                <p class="item-value">Capsule(s)/day: _________</p>
+                                <p class="item-description">
+                                    Supports brain cells in producing
+                                    vital neurotransmitters needed for
+                                    sustaining attention.*
+                                </p>
+
+                            </div>
+                            <div class="recommendation_item-vertical-divider"></div>
+                            <div class="recommendation_item">
+                                <p class="item-label">Zinc</p>
+                                <p class="item-value">Tablet(s)/day: _________</p>
+                                <p class="item-description">
+                                    Provides antioxidant protection and
+                                    has consistently enhanced attention
+                                    in clinical trials.*
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="cognitiveFlexibility" class="diagram-item">
+                    <div class="diagram-item-icon-box">
+                        <img class="diagram-item-icon" src="./fonts/refresh-arrows.png">
+                    </div>
+                    <div class="diagram-item-body">
+                        <div class="body-left-side">
+                        </div>
+                        <div class="body-description">
+                            <p class="description-item description-label">Cognitive Flexibility</p>
+                            <p class="description-item description-item__without-sublabel">
+                                On the cognitive flexibility test, you
+                                scored a 4 out of 10 based on your
+                                age and gender. This is considered to
+                                be in the LOW range.
+                            </p>
+                        </div>
+                        <div class="body-score-history">
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item history-item-active">
+                                <div class="slider_pointer"></div>
+                            </div>
+                        </div>
+
+                        <div class="body_current-score">
+                            <div class="current_slider">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="slider_description">
+                                <p class="slider_description__item slider_description__item-value">4</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">below</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">poor</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">range</p>
+                            </div>
+
+                        </div>
+                        <div class="body_recommendations ">
+                            <p class="recommendation-small-displays">recommendations</p>
+                            <div class="recommendation_item">
+                                <p class="item-label">ProSynbiotic</p>
+                                <p class="item-value">Capsule(s)/day: _________</p>
+                                <p class="item-description">
+                                    Supports gut microbiome function
+                                    which optimizes the production of
+                                    Serotonin and GABA.*
+                                </p>
+
+                            </div>
+                            <div class="recommendation_item-vertical-divider"></div>
+                            <div class="recommendation_item">
+                                <p class="item-label">Cataplex&reg; G</p>
+                                <p class="item-value">Tablet(s)/day: _________ with meal</p>
+                                <p class="item-description">
+                                    Provides a calmative effect on the
+                                    nervous system by supporting
+                                    parasympathetic functioning.*
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="processingSpeed" class="diagram-item">
+                    <div class="diagram-item-icon-box">
+                        <img class="diagram-item-icon" src="./fonts/speedometer.png">
+                    </div>
+                    <div class="diagram-item-body">
+                        <div class="body-left-side">
+                        </div>
+                        <div class="body-description">
+                            <p class="description-item description-label">Processing Speed</p>
+                            <p class="description-item  description-item__without-sublabel">
+                                On the processing speed test, you
+                                scored a 7 out of 10 based on your
+                                age and gender. This is considered to
+                                be in the EXPECTED range.
+                            </p>
+                        </div>
+                        <div class="body-score-history">
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="history-item history-item-active">
+                                <div class="slider_pointer"></div>
+                            </div>
+                        </div>
+
+                        <div class="body_current-score">
+                            <div class="current_slider">
+                                <div class="slider_pointer"></div>
+                            </div>
+                            <div class="slider_description">
+                                <p class="slider_description__item slider_description__item-value">4</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">below</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">optimal</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-below-optimal">range</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">poor</p>
+                                <p class="slider_description__item slider_description__item-description slider_description__item-poor">range</p>
+                            </div>
+
+                        </div>
+                        <div class="body_recommendations">
+                            <p class="recommendation-small-displays">recommendations</p>
+                            <div class="recommendation_item">
+                                <p class="item-label">L-Tyrosine</p>
+                                <p class="item-value">Tablet(s)/day: _________</p>
+                                <p class="item-description">
+                                    Increases production of
+                                    neurotransmitters essential for the
+                                    brain's processing functions.*
+                                </p>
+
+                            </div>
+                            <div class="recommendation_item-vertical-divider"></div>
+                            <div class="recommendation_item">
+                                <p class="item-label">Vitamin B12 with Folate</p>
+                                <p class="item-value">Tablet(s)/day: _________</p>
+                                <p class="item-description">
+                                    Essential for structural integrity of
+                                    the brain and spinal cord as well as
+                                    improving overall cognitive skills.*
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <p class="footnote">
+                *This statement has not been evaluated by the FDA.
+                This product is not intended to diagnose, treat, cure,
+                or prevent any disease.
+            </p>
+        </footer>
+    </div>
+    <div class="container">
+        <div class="references-box">
+            <div class="reference-title">
+                <p class="title-value">references</p>
+                <img src="./fonts/minus.png" class="title-toggle-icon title-toggle-icon-opened">
+                <img src="./fonts/plus.png" class="title-toggle-icon">
+            </div>
+            <div class="references-sections-box">
+                <div class="references-section">
+                    <div id="ref_1" class="reference-item">
+                        <p class="item-number">1.</p>
+                        <p class="item-content">
+                            Higher level of certain fatty acid associated with lower
+                            dementia risk. Schaefer et al. JAMA Neurology, 2006;63:1527-
+                            1528
+                        </p>
+                    </div>
+                    <div id="ref_2" class="reference-item">
+                        <p class="item-number">2.</p>
+                        <p class="item-content">
+                            Red Blood Cell Omega-3 Fatty Acid Levels and Markers of
+                            Accelerated Brain Aging. Tan ZS, Harris WS, Beiser AS, et al.
+                            Neurology 2012;78:658-664.
+                        </p>
+                    </div>
+                    <div id="ref_3" class="reference-item">
+                        <p class="item-number">3.</p>
+                        <p class="item-content">
+                            Zhang J, Sasaki S, Amano K, Kesteloot H. Fish consumption
+                            and mortality from all causes, ischemic heart disease, and
+                            stroke: an ecological study. Prev Med 1999;28:520–9.
+                        </p>
+                    </div>
+                    <div id="ref_4" class="reference-item">
+                        <p class="item-number">4.</p>
+                        <p class="item-content">
+                            Higher Omega-3 Index score is associated with a larger
+                            volume of grey matter in the memory region of the brain.
+                            Pottala et al. Neurology 2014 Jan; 10.1212/WNL
+                        </p>
+                    </div>
+                    <div id="ref_5" class="reference-item">
+                        <p class="item-number">5.</p>
+                        <p class="item-content">
+                            Increased cell levels of EPA/DHA improved memory scores in
+                            healthy young adults. Stonehouse et al. American J. of Clinical
+                            Nutrition,2013;97:1134-1143
+                        </p>
+                    </div>
+                    <div id="ref_6" class="reference-item">
+                        <p class="item-number">6.</p>
+                        <p class="item-content">
+                            The level of DHA in children’s blood cells significantly predicts
+                            their ability to concentrate & learn at school. Montgomery et al.
+                            PLoS ONE, 2013; 8:e66697
+                        </p>
+                    </div>
+                    <div id="ref_7" class="reference-item">
+                        <p class="item-number">7.</p>
+                        <p class="item-content">
+                            Low Omega-3 fatty acids in red blood cells associated with
+                            aggressive and ADHD behaviors. Meyer et al. PLoS ONE,
+                            2015;10(6)
+                        </p>
+                    </div>
+                    <div id="ref_8" class="reference-item">
+                        <p class="item-number">8.</p>
+                        <p class="item-content">
+                            Association between Blood Omega-3 Index and Cognition in
+                            Typically Developing Dutch Adolescents. Van der Wurff IS, von
+                            Schacky C, Berge K, Zeegers MP, Kirschner PA, de Groot RH;
+                            Nutrients. 2016 Jan 2;8(1). pii: E13.
+                        </p>
+                    </div>
+                    <div id="ref_9" class="reference-item">
+                        <p class="item-number">9.</p>
+                        <p class="item-content">
+                            Omega-3 DHA and EPA for cognition, behavior and mood:
+                            Clinical findings and structural-functional synergies with cell
+                            membrane phospholipids. Kidd, P. M. Alternative Medicine
+                            Review, 2007;12, 207–227
+                        </p>
+                    </div>
+                    <div id="ref_10" class="reference-item">
+                        <p class="item-number">10.</p>
+                        <p class="item-content">
+                            A meta-analytic review of double-blind, placebo-controlled
+                            trials of antidepressant efficacy of omega-3 fatty acids. Lin
+                            PY1, Su KP., J Clin Psychiatry. 2007 Jul;68(7):1056-61
+                        </p>
+                    </div>
+                    <div id="ref_11" class="reference-item">
+                        <p class="item-number">11.</p>
+                        <p class="item-content">
+                            Are omega-3 fatty acids antidepressants or just moodimproving
+                            agents? The effect depends upon diagnosis,
+                            supplement preparation, and severity of depression. Lin PY,
+                            Mischoulon D, Freeman MP, Matsuoka Y, Hibbeln J, Belmaker
+                            RH, Su KP. Molecular Psychiatry. 2012 Dec;17(12):1161-3
+                        </p>
+                    </div>
+                    <div id="ref_12" class="reference-item">
+                        <p class="item-number">12.</p>
+                        <p class="item-content">
+                            Omega-3 fatty acids improve recovery, whereas omega-6 fatty
+                            acids worsen outcome, after spinal cord injury in the adult rat.
+                            King VR1, Huang WL, Dyall SC, Curran OE, Priestley JV,
+                            Michael-Titus AT. Journal of Neuroscience, 2006;26(17):4672-
+                            80.
+                        </p>
+                    </div>
+                    <div id="ref_13" class="reference-item">
+                        <p class="item-number">13.</p>
+                        <p class="item-content">
+                            The effect of fatty or lean fish intake on inflammatory gene
+                            expression in peripheral blood mononuclear cells of patients
+                            with coronary heart disease. De Mello VD, Erkkilä AT, Schwab
+                            US, et al. Eur J Nutr. 2009 Dec;48(8):447-55.
+                        </p>
+                    </div>
+                    <div id="ref_14" class="reference-item">
+                        <p class="item-number">14.</p>
+                        <p class="item-content">
+                            The omega-6/omega-3 fatty acid ratio, genetic variation, and
+                            cardiovascular disease.Simopoulos AP.Asia Pac J Clin Nutr.
+                            2008;17 Suppl 1:131-4.
+                        </p>
+                    </div>
+                </div>
+                <div class="references-section">
+                    <div id="ref_15" class="reference-item">
+                        <p class="item-number">15.</p>
+                        <p class="item-content">
+                            Promotion of prostatic metastatic migration towards human
+                            bone marrow stoma by Omega 6 and its inhibition by Omega 3
+                            PUFAs. M D Brown1, C A Hart1, E Gazi1, S Bagley2 and N W
+                            Clarke. British Journal of Cancer (2006) 94, 842–853.
+                        </p>
+                    </div>
+                    <div id="ref_16" class="reference-item">
+                        <p class="item-number">16.</p>
+                        <p class="item-content">
+                            A high Omega-3 Index may provide effective pain relief for
+                            people with chronic musculoskeletal pain. Cleland et al.
+                            Nutrition & Dietetics. 2009:66;4-6
+                        </p>
+                    </div>
+                    <div id="ref_17" class="reference-item">
+                        <p class="item-number">17.</p>
+                        <p class="item-content">
+                            Higher Omega-3 levels could reduce the incidence of neck and
+                            back pain and reduce the need for medication. Lembke et all. J
+                            Sports Sci Med. 2014 Jan;13(1):151-156
+                        </p>
+                    </div>
+                    <div id="ref_18" class="reference-item">
+                        <p class="item-number">18.</p>
+                        <p class="item-content">
+                            Omega-3 Fatty Acids in Inflammation and Autoimmune
+                            Diseases. Simopoulos AP.J Am Coll Nutr. 2002
+                            Dec;21(6):495-505.
+                        </p>
+                    </div>
+                    <div id="ref_19" class="reference-item">
+                        <p class="item-number">19.</p>
+                        <p class="item-content">
+                            Bailes JE1, Mills JD. Docosahexaenoic acid reduces traumatic
+                            axonal injury in a rodent head injury model. Journal of
+                            Neurotrauma. 2010 Sep;27(9):1617-24.
+                        </p>
+                    </div>
+                    <div id="ref_20" class="reference-item">
+                        <p class="item-number">20.</p>
+                        <p class="item-content">
+                            Mills JD1, Hadley K, Bailes JE. Dietary supplementation with
+                            the omega-3 fatty acid docosahexaenoic acid in traumatic
+                            brain injury. Neurosurgery. 2011 Feb;68(2):474-81; discussion
+                            481.
+                        </p>
+                    </div>
+                    <div id="ref_21" class="reference-item">
+                        <p class="item-number">21.</p>
+                        <p class="item-content">
+                            Omega-3 fatty acids in health and disease and in growth and
+                            development. Simopoulos AP.Am J Clin Nutr. 1991
+                            Sep;54(3):438-63.
+                        </p>
+                    </div>
+                    <div id="ref_22" class="reference-item">
+                        <p class="item-number">22.</p>
+                        <p class="item-content">
+                            The importance of the omega-6/omega-3 fatty acid ratio in
+                            cardiovascular disease and other chronic diseases.
+                            Simopoulos AP.Exp Biol Med (Maywood). 2008
+                            Jun;233(6):674-88. doi: 10.3181/0711-MR-311. Epub 2008 Apr
+                            11.
+                        </p>
+                    </div>
+                    <div id="ref_23" class="reference-item">
+                        <p class="item-number">23.</p>
+                        <p class="item-content">
+                            University of Maryland Medical Center.
+                            http://www.umm.edu/health/medical/altmed/supplement/omega
+                            3-fatty-acids
+                        </p>
+                    </div>
+                    <div id="ref_24" class="reference-item">
+                        <p class="item-number">24.</p>
+                        <p class="item-content">
+                            Connecting leptin signaling to biological function. MB Allison,
+                            MG Myers. Departments of Internal Medicine, and Molecular
+                            and Integrative Physiology, University of Michigan. J
+                            Endocrinol. 10/1/14; 223 T25-T35.
+                        </p>
+                    </div>
+                    <div id="ref_25" class="reference-item">
+                        <p class="item-number">25.</p>
+                        <p class="item-content">
+                            Palmitic acid mediates hypothalamic insulin resistance by
+                            altering PKC-θ subcellular localization in rodents. Benoit et all.
+                            J Clin Invest. 2009;119(9):2577-2589. doi:10.1172/JCI36714.
+                        </p>
+                    </div>
+                    <div id="ref_26" class="reference-item">
+                        <p class="item-number">26.</p>
+                        <p class="item-content">
+                            Nutritional and insulin regulation of fatty acid synthetase and
+                            leptin gene expression through ADD1/SREBP1. Kim et all. J
+                            Clin Invest. 1998 Jan 1; 101(1): 1–9.
+                        </p>
+                    </div>
+                    <div id="ref_27" class="reference-item">
+                        <p class="item-number">27.</p>
+                        <p class="item-content">
+                            Effects of Step-Wise Increases in Dietary Carbohydrate on
+                            Circulating Saturated Fatty Acids and Palmitoleic Acid in
+                            Adults with Metabolic Syndrome. Brittanie et all. PLoS One.
+                            2014; 9(11): e113605.
+                        </p>
+                    </div>
+                    <div id="ref_28" class="reference-item">
+                        <p class="item-number">28.</p>
+                        <p class="item-content">
+                            Should dietary SFA be exchanged for linoleic acid? Frits AJ
+                            Muskiet. Am J Clin Nutr. doi: 10.3945/ajcn.112.044990
+                            October 2012 vol. 96 no. 4 944-945
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="read-more-anchor" href='./Home/Omega3.html'>
+            <p class="anchor-text">
+                learn more
+            </p>
+        </a>
+    </div>
+    <hr />
+    <footer>
+        <p>&copy; 2018 - My ASP.NET Application</p>
+    </footer>
+</div>
+<script src="./JSTemplate/jquery-3.3.1.slim.min.js"></script>
+<script src="./JSTemplate/index.js?i=631"></script>
+</body>
+</html>

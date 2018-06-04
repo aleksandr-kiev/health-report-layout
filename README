@@ -1,0 +1,3 @@
+To generate CSS:
+
+`sass styles/style.scss > styles/css/style.css`
