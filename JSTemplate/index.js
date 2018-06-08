@@ -1,6 +1,5 @@
-var dev = 21;
-
 var testResults = [
+    //  BrainSpan Trajectory Index is increasing, min value = 0, max value = 10.
     {   element: $('#brainSpan'),
         name: 'brainSpan',
         value: 11,
@@ -9,6 +8,7 @@ var testResults = [
             optimal: 10
         }
     },
+    //  Omega-3 Index is increasing, min value = 0, max value = 12.
     {   summaryElement: $('#omega3'),
         name: 'omega3',
         generalElement: $('#omega3General'),
@@ -19,6 +19,7 @@ var testResults = [
             optimal: 12
         }
     },
+    //  Cell Inflammation Balance is decreasing, min value = 16, max value = 1. The value 16 means 16:1, the value 1 means 1:1
     {   summaryElement : $('#cellInflammation'),
         name: 'cellInflammation',
         generalElement: $('#cellInflammationGeneral'),
@@ -29,6 +30,7 @@ var testResults = [
             optimal: 1
         }
     },
+    //  Carb Burn Rate Index is decreasing, min value = 29, max value = 17.
     {   summaryElement : $('#carbBurRate'),
         name: 'carbBurRate',
         generalElement: $('#carbBurRateGeneral'),
@@ -39,6 +41,7 @@ var testResults = [
             optimal: 17
         }
     },
+    //  Memory Capacity is increasing, min value = 1, max value = 7;
     {   summaryElement : $('#memoryCapacity'),
         name: 'memoryCapacity',
         generalElement: $('#memoryCapacityGeneral'),
@@ -49,6 +52,7 @@ var testResults = [
             optimal: 7
         }
     },
+    //  Sustained Attention is increasing, min value = 1, max value = 7;
     {   summaryElement : $('#sustainedAttention'),
         name: 'sustainedAttention',
         generalElement: $('#sustainedAttentionGeneral'),
@@ -59,6 +63,7 @@ var testResults = [
             optimal: 7
         }
     },
+    //  Cognitive Flexibility is increasing, min value = 1, max value = 7;
     {   summaryElement : $('#cognitiveFlexibility'),
         name: 'cognitiveFlexibility',
         generalElement: $('#cognitiveFlexibilityGeneral'),
@@ -69,6 +74,7 @@ var testResults = [
             optimal: 7
         }
     },
+    //  Processing Speed is increasing, min value = 1, max value = 7;
     {   summaryElement : $('#processingSpeed'),
         name: 'processingSpeed',
         generalElement: $('#processingSpeedGeneral'),
@@ -324,11 +330,13 @@ const resultsLogic = {
 };
 
 $(document).ready(function (){
+    // Start counting and rendering of tests results.
     renderTestResults();
 });
 handleIconsPosition();
 
 $( window ).resize(function() {
+    // The handling of resize event.
     renderTestResults();
     handleIconsPosition();
 });
@@ -375,7 +383,7 @@ function closeReference () {
     colapsibileContent.css('height', 0)
 }
 
-
+// The handling each of tests.
 function renderTestResults () {
     testResults.forEach(function(element) {
         if(element.name !== 'brainSpan'){
@@ -386,12 +394,13 @@ function renderTestResults () {
         }
     })
 }
+
 function processItem (test) {
     processHorizontalAndVerticalSlidersPosition(test);
     processRadialSlider(test);
-
 }
 
+// Setting the counted position of horizontal slider.
 function moveHorizontalSlider (test, currentResult) {
     var pointer = test.generalElement
         .find('.test-box__scale-box')
@@ -406,6 +415,8 @@ function moveHorizontalSlider (test, currentResult) {
 
     pointer.css('left', ((currentResult * onePercentOfBar) - 2) + 'px');
 }
+
+// Setting the counted position of vertical slider.
 function moveVerticalSlider (test, currentResult){
     var barHeight = +test.summaryElement.find('.current_slider').css('height').slice(0, -2);
     var pointer = test.summaryElement.find('.current_slider').find('.slider_pointer');
@@ -414,6 +425,7 @@ function moveVerticalSlider (test, currentResult){
     pointer.css('top', ((100 - currentResult) * onePercent) + 'px');
 
 }
+
 function processBrainSpan (test) {
     var value = 0;
     var pointer = test.element
