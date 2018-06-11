@@ -13,7 +13,12 @@ var testResults = [
         name: 'omega3',
         generalElement: $('#omega3General'),
         graphElement: $('#omega3Graph'),
-        value: 12,
+        value: 6,
+        history: {
+            first: 0,
+            second: 6,
+            third: 12
+        },
         interval: {
             poor: 0,
             optimal: 12
@@ -25,6 +30,11 @@ var testResults = [
         generalElement: $('#cellInflammationGeneral'),
         graphElement: $('#cellInflammationGraph'),
         value: 8,
+        history: {
+            first: 0,
+            second: 6,
+            third: 3
+        },
         interval: {
             poor: 16,
             optimal: 1
@@ -36,6 +46,11 @@ var testResults = [
         generalElement: $('#carbBurRateGeneral'),
         graphElement: $('#carbBurRateGraph'),
         value: 16,
+        history: {
+            first: 18,
+            second: 22,
+            third: 27
+        },
         interval: {
             poor: 29,
             optimal: 17
@@ -46,7 +61,12 @@ var testResults = [
         name: 'memoryCapacity',
         generalElement: $('#memoryCapacityGeneral'),
         graphElement: false,
-        value: 1,
+        value: 7,
+        history: {
+            first: 1,
+            second: 2,
+            third: 5
+        },
         interval: {
             poor: 1,
             optimal: 7
@@ -58,6 +78,11 @@ var testResults = [
         generalElement: $('#sustainedAttentionGeneral'),
         graphElement: false,
         value: 2,
+        history: {
+            first: 10,
+            second: 0,
+            third: 5
+        },
         interval: {
             poor: 1,
             optimal: 7
@@ -68,7 +93,12 @@ var testResults = [
         name: 'cognitiveFlexibility',
         generalElement: $('#cognitiveFlexibilityGeneral'),
         graphElement: false,
-        value: 3,
+        value: 7,
+        history: {
+            first: 6,
+            second: 4,
+            third: 2
+        },
         interval: {
             poor: 1,
             optimal: 7
@@ -80,6 +110,11 @@ var testResults = [
         generalElement: $('#processingSpeedGeneral'),
         graphElement: false,
         value: 4,
+        history: {
+            first: 9,
+            second: 6,
+            third: 3
+        },
         interval: {
             poor: 1,
             optimal: 7
@@ -87,28 +122,39 @@ var testResults = [
     }
 ];
 
+var historyDates = {
+    history: {
+        first: '10/20/17',
+        second: '10/15/17',
+        third: '10/05/17'
+    },
+    currentDate : '10/25/17'
+};
+
 //The logic of tests result
 const resultsLogic = {
     omega3 : {
         linear: function  (test) {
-            var value = 0;
-            var onePercent = 0;
+            var value = resultsLogic.omega3.getActualNormalizedResult(test, test.value);
 
-            test.value < test.interval.poor ?
-                value = test.interval.poor:
-                test.value > test.interval.optimal ?
-                    value = test.interval.optimal:
-                    value = test.value;
+            var onePercent = resultsLogic.omega3.getOnePercent(test);
 
-
-            onePercent = ((test.interval.optimal - test.interval.poor) / 100);
-            var currentResult = (test.interval.poor + value) / onePercent ;
+            var currentResult = resultsLogic.omega3.getCurrentPercents(test, value, onePercent) ;
 
             //Change horizontal slider position based on test.value
             moveHorizontalSlider(test, currentResult);
 
             //Change vertical slider position based on test.value
             moveVerticalSlider(test, currentResult);
+
+            // Change history's sliders position based on test.value
+            if(test.history){
+                renderHistorySlider(
+                    test,
+                    resultsLogic.omega3.getActualNormalizedResult,
+                    resultsLogic.omega3.getOnePercent,
+                    resultsLogic.omega3.getCurrentPercents);
+            }
 
             //Change background-color based on test.value
             if(((test.interval.poor + value) / onePercent ) > 33) {
@@ -149,31 +195,56 @@ const resultsLogic = {
             var currentResult = (test.interval.poor + value) / onePercent ;
             var angle = -28 + (2.36 * currentResult);
             test.graphElement.css('transform', 'rotate('+ angle+'deg)')
+        },
+        getActualNormalizedResult: function getActualNormalizedResult(test, value) {
+            var result = 0;
+            value < test.interval.poor ?
+                result = test.interval.poor:
+                value > test.interval.optimal ?
+                    result = test.interval.optimal:
+                    result = value;
+            return result;
+        },
+        getOnePercent: function getOnePercent (test) {
+            return ((test.interval.optimal - test.interval.poor) / 100)
+        },
+        getCurrentPercents: function getCurrentPercents(test, normalizedTestValue, onePercentArg) {
+            return (test.interval.poor + normalizedTestValue) / onePercentArg;
         }
     },
     cellInflammation : {
         linear: function (test) {
-            var value = 0;
-            var onePercent = 0;
-            var pointer = test.generalElement
-                .find('.test-box__scale-box')
-                .find('.scale-box__scale')
-                .find('.scale__pointer');
+            var value = getActualNormalizedResult(test, test.value);
+            function getActualNormalizedResult(test, value) {
+                var result = 0;
+                value < test.interval.optimal ?
+                    result = test.interval.optimal:
+                    value > test.interval.poor ?
+                        result = test.interval.poor:
+                        result = value;
+                return result;
+            }
 
-            test.value < test.interval.optimal ?
-                value = test.interval.optimal:
-                test.value > test.interval.poor ?
-                    value = test.interval.poor:
-                    value = test.value;
+            var onePercent = getOnePercent(test);
+            function getOnePercent (test) {
+                return ((test.interval.poor - test.interval.optimal) / 100);
+            }
 
-            onePercent = ((test.interval.poor - test.interval.optimal) / 100);
-            var currentResult = (test.interval.poor - value) / onePercent ;
+            var currentResult = getCurrentPercents(test, value, onePercent) ;
+            function getCurrentPercents(test, normalizedTestValue, onePercentArg) {
+                return (test.interval.poor - normalizedTestValue) / onePercentArg ;
+            }
 
             //Change horizontal slider position based on test.value
             moveHorizontalSlider(test, currentResult);
 
             //Change vertical slider position based on test.value
             moveVerticalSlider(test, currentResult);
+
+            // Change history's sliders position based on test.value
+            if(test.history){
+                renderHistorySlider(test, getActualNormalizedResult, getOnePercent, getCurrentPercents);
+            }
 
             //Change background-color based on test.value
             if(((test.interval.poor - value) / onePercent) > 33) {
@@ -217,27 +288,37 @@ const resultsLogic = {
     },
     carbBurRate : {
         linear: function (test) {
-            var value = 0;
-            var onePercent = 0;
-            var pointer = test.generalElement
-                .find('.test-box__scale-box')
-                .find('.scale-box__scale')
-                .find('.scale__pointer');
+            var value = getActualNormalizedResult(test, test.value);
+            function getActualNormalizedResult(test, value) {
+                var result = 0;
+                value < test.interval.optimal ?
+                    result = test.interval.optimal:
+                    value > test.interval.poor ?
+                        result = test.interval.poor:
+                        result = value;
+                return result;
+            }
 
-            test.value < test.interval.optimal ?
-                value = test.interval.optimal:
-                test.value > test.interval.poor ?
-                    value = test.interval.poor:
-                    value = test.value;
+            var onePercent = getOnePercent(test);
+            function getOnePercent (test) {
+                return ((test.interval.poor - test.interval.optimal) / 100);
+            }
 
-            onePercent = ((test.interval.poor - test.interval.optimal) / 100);
-            var currentResult = (test.interval.poor - value) / onePercent;
+            var currentResult = getCurrentPercents(test, value, onePercent) ;
+            function getCurrentPercents(test, normalizedTestValue, onePercentArg) {
+                return (test.interval.poor - normalizedTestValue) / onePercentArg ;
+            }
 
             //Change horizontal slider position based on test.value
             moveHorizontalSlider(test, currentResult);
 
             //Change vertical slider position based on test.value
             moveVerticalSlider(test, currentResult);
+
+            // Change history's sliders position based on test.value
+            if(test.history){
+                renderHistorySlider(test, getActualNormalizedResult, getOnePercent, getCurrentPercents);
+            }
 
             //Change background-color based on test.value
             if(((test.interval.poor - value) / onePercent) > 33) {
@@ -281,27 +362,37 @@ const resultsLogic = {
     },
     multipleTests : {
         linear: function (test) {
-            var value = 0;
-            var onePercent = 0;
-            var pointer = test.generalElement
-                .find('.test-box__scale-box')
-                .find('.scale-box__scale')
-                .find('.scale__pointer');
+            var value = getActualNormalizedResult(test, test.value);
+            function getActualNormalizedResult(test, value) {
+                var result = 0;
+                value < test.interval.poor ?
+                    result = test.interval.poor:
+                    value > test.interval.optimal ?
+                        result = test.interval.optimal:
+                        result = value;
+                return result;
+            }
 
-            test.value < test.interval.poor ?
-                value = test.interval.poor:
-                test.value > test.interval.optimal ?
-                    value = test.interval.optimal:
-                    value = test.value;
+            var onePercent = getOnePercent(test);
+            function getOnePercent (test) {
+                return ((test.interval.optimal - test.interval.poor) / 100);
+            }
 
-            onePercent = ((test.interval.optimal - test.interval.poor) / 100);
-            var currentResult = (Math.abs(test.interval.poor - value) / onePercent);
+            var currentResult = getCurrentPercents(test, value, onePercent) ;
+            function getCurrentPercents(test, normalizedTestValue, onePercentArg) {
+                return (Math.abs(test.interval.poor - normalizedTestValue) / onePercentArg);
+            }
 
             //Change horizontal slider position based on test.value
             moveHorizontalSlider(test, currentResult);
 
             //Change vertical slider position based on test.value
             moveVerticalSlider(test, currentResult);
+
+            // Change history's sliders position based on test.value
+            if(test.history){
+                renderHistorySlider(test, getActualNormalizedResult, getOnePercent, getCurrentPercents);
+            }
 
             //Change background-color based on test.value
             if((Math.abs(test.interval.poor - value) / onePercent) > 33) {
@@ -332,12 +423,16 @@ const resultsLogic = {
 $(document).ready(function (){
     // Start counting and rendering of tests results.
     renderTestResults();
+    // Add value to the date pointer.
+    renderDates()
 });
 handleIconsPosition();
 
 $( window ).resize(function() {
     // The handling of resize event.
     renderTestResults();
+    // Add value to the date pointer.
+    renderDates()
     handleIconsPosition();
 });
 
@@ -383,6 +478,21 @@ function closeReference () {
     colapsibileContent.css('height', 0)
 }
 
+function renderDates () {
+    if(historyDates.currentDate){
+        $('.date_current').text(historyDates.currentDate)
+    }
+    if(historyDates.history.first){
+        $('.date_first').text(historyDates.history.first)
+    }
+    if(historyDates.history.second){
+        $('.date_second').text(historyDates.history.second)
+    }
+    if(historyDates.history.third){
+        $('.date_third').text(historyDates.history.third)
+    }
+}
+
 // The handling each of tests.
 function renderTestResults () {
     testResults.forEach(function(element) {
@@ -423,7 +533,95 @@ function moveVerticalSlider (test, currentResult){
     var pointerHeight = $(pointer).outerHeight();
     var onePercent = (barHeight - pointerHeight) / 100;
     pointer.css('top', ((100 - currentResult) * onePercent) + 'px');
+}
 
+function renderHistorySlider (test, getActualNormalizedResult, getOnePercentArg, getCurrentPercents) {
+    if(test.history.first || test.history.first === 0) {
+        processHistoryItem(test, getActualNormalizedResult, getOnePercentArg, getCurrentPercents, 'first');
+
+    }
+    if(test.history.second || test.history.second === 0) {
+        processHistoryItem(test, getActualNormalizedResult, getOnePercentArg, getCurrentPercents, 'second');
+
+    }
+    if(test.history.third || test.history.third === 0) {
+        processHistoryItem(test, getActualNormalizedResult, getOnePercentArg, getCurrentPercents, 'third');
+
+
+    }
+}
+
+function processHistoryItem(test, getActualNormalizedResult, getOnePercentArg, getCurrentPercents, order) {
+    var normalizedresult = getActualNormalizedResult(test, test.history[order]);
+    var onePercent = getOnePercentArg(test);
+    var currentPercents = getCurrentPercents(test, normalizedresult, onePercent);
+    moveHistorySliders(test, currentPercents, order);
+    drawLinesBetweenHistoryItems(test, order, currentPercents);
+
+    //Change background-color based on test.history.[order] value.
+    if(currentPercents > 33) {
+        if( currentPercents > 66) {
+            paintHistoryPointerGreen(test, order);
+        }
+        else{
+            paintHistoryPointerOrange(test, order);
+        }
+    }
+}
+
+function moveHistorySliders (test, currentResult, order) {
+    test.summaryElement.find('.body-score-history-' + order).addClass('history-item-active');
+    var barHeight = +test.summaryElement.find('.body-score-history-' + order).css('height').slice(0, -2);
+    var pointer = test.summaryElement.find('.body-score-history').find('.history_pointer_' + order);
+    var pointerHeight = $(pointer).outerHeight();
+    var onePercent = (barHeight - pointerHeight) / 100;
+    pointer.css('top', ((100 - currentResult) * onePercent) + 'px');
+}
+
+function drawLinesBetweenHistoryItems(test, order, currentPercents) {
+    var line = test.summaryElement
+        .find('.body-score-history-'+ order)
+        .find('.history-svg')
+        .find('line');
+    var historyPointer = test.summaryElement
+        .find('.body-score-history-'+ order)
+        .find('.history_pointer_' + order);
+    var drawingLineHeight = 4;
+    var pointerHeight = historyPointer.outerHeight();
+    var historyPointerPosition = +historyPointer.css('top').slice(0, -2);
+    var rightPointerPosition = getRightPointerPosition(test, order);
+
+    line.css('stroke-width',drawingLineHeight );
+    line.css('stroke-width',drawingLineHeight );
+
+    line.attr('x1', '0');
+    line.attr('y1', (historyPointerPosition + (pointerHeight / 2)))
+    line.attr('x2', '100%');
+    line.attr('y2', (rightPointerPosition + (pointerHeight / 2)))
+}
+function getRightPointerPosition (test, order) {
+    var rightPointer;
+    switch (order) {
+        case "first":
+            rightPointer = test.summaryElement
+                .find('.body_current-score')
+                .find('.current_slider')
+                .find('.slider_pointer');
+            break;
+        case "second" :
+            rightPointer = test.summaryElement
+                .find('.body-score-history')
+                .find('.body-score-history-first')
+                .find('.slider_pointer');
+            break;
+        case "third" :
+            rightPointer = test.summaryElement
+                .find('.body-score-history')
+                .find('.body-score-history-second')
+                .find('.slider_pointer');
+            break;
+    }
+    return +rightPointer.css('top').slice(0, -2);
 }
 
 function processBrainSpan (test) {
@@ -614,4 +812,12 @@ function paintSummaryRecomendationsPink (test) {
     var recomendationsElement = test.summaryElement
         .find('.body_recommendations');
     recomendationsElement.addClass('recommendation-pink');
+}
+function paintHistoryPointerGreen (test, order) {
+    var pointer = test.summaryElement.find('.body-score-history-'+order).find('.slider_pointer');
+    pointer.addClass('slider_pointer__green')
+}
+function paintHistoryPointerOrange (test, order) {
+    var pointer = test.summaryElement.find('.body-score-history-'+order).find('.slider_pointer');
+    pointer.addClass('slider_pointer__orange')
 }

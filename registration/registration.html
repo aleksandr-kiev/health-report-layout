@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Registration</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <link href="styles/css/registration.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,600" rel="stylesheet">
+    <div class="registration-box">
+        <div class="logo">
+            <img src="images/bs_logo.png">
+        </div>
+        <h2 class="title">Registration</h2>
+        <form id="registrationForm" action="/Account/Register" method="post" role="form" name="__RequestVerificationToken"
+              type="hidden" value="QiAgHbdvc7m2qhRNsy5ish3-GSaMNDxtnTx5vZzcpgvCaHBLToWl5RvVo3PeU9PCpIz_LltiBu2rDNilfiVmS3wEotyMUjisEc7UmScec0E1">
+            <div class="form-field">
+                <img src="images/icons/email-icon.png" class="icon">
+                <input name="Email" class="input" placeholder="Email">
+            </div>
+            <div class="form-field">
+                <img src="images/icons/buildings-icon.png" class="icon">
+                <input type="text" name="Hometown" class="input" placeholder="Hometown">
+            </div>
+            <div class="form-field">
+                <img src="images/icons/lock-icon.png" class="icon">
+                <input type="password" name="Password" class="input" placeholder="Password">
+            </div>
+            <div class="form-field">
+                <img src="images/icons/lock-icon.png" class="icon">
+                <input type="password" name="ConfirmPassword"  class="input" placeholder="Re-type password">
+            </div>
+            <input type="submit" class="submit-button" value="Register Now">
+        </form>
+        <p class="note">Already have an account?
+            <a class="anchor" href="/Account/Login">Login</a></p>
+
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script src="js/registration.js"></script>
+</div>
+</body>
+</html>
+
+
+
+
+

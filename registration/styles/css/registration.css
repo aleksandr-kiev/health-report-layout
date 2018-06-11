@@ -1,0 +1,128 @@
+html, body, .container {
+  height: 100%;
+  margin: 0; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.registration-box {
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+  .registration-box > * {
+    width: 100%; }
+  .registration-box .logo img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 350px; }
+  .registration-box .title {
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    font-weight: inherit;
+    font-size: 29px;
+    margin: 15px 0; }
+  .registration-box > form {
+    margin-bottom: 15px;
+    height: auto; }
+    .registration-box > form > .errorMessage {
+      padding: 15px;
+      width: 100%;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      box-shadow: 0 0 10px #ff000078;
+      border-radius: 5px;
+      border-color: rgba(255, 0, 0, 0.47);
+      border-width: 2px 2px 2px 2px;
+      border-style: solid solid solid solid; }
+      .registration-box > form > .errorMessage > strong {
+        width: 100%;
+        text-align: center;
+        font-family: "Oswald", sans-serif;
+        display: block; }
+      .registration-box > form > .errorMessage ul {
+        padding: 0;
+        list-style: none;
+        margin-bottom: 0; }
+        .registration-box > form > .errorMessage ul li {
+          margin: 5px 0;
+          font-size: 16px; }
+    .registration-box > form .form-field {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      transition: max-height .3s ease-out; }
+      .registration-box > form .form-field .icon {
+        width: 20px;
+        height: auto;
+        position: relative;
+        top: 9px; }
+      .registration-box > form .form-field .input {
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        padding: 5px 0 5px 10px;
+        border-color: #1b4388;
+        border-width: 0 0 2px 0;
+        border-style: none none solid none;
+        font-size: 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 0;
+        max-height: 35px; }
+      .registration-box > form .form-field .input:focus {
+        outline: none; }
+      .registration-box > form .form-field .input.notValid {
+        border-color: rgba(255, 0, 0, 0.47); }
+    .registration-box > form .form-field.has-error {
+      max-height: 100px; }
+      .registration-box > form .form-field.has-error .errorMessage {
+        padding-left: 40px;
+        padding-top: 10px; }
+    .registration-box > form .form-field:nth-child(1) {
+      margin-top: 0; }
+    .registration-box > form .submit-button {
+      margin-top: 30px;
+      width: 100%;
+      height: 40px;
+      border: none;
+      text-transform: uppercase;
+      color: white;
+      font-weight: 600;
+      font-size: 17px;
+      background-color: #1a4184;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block; }
+    .registration-box > form .submit-button:hover {
+      box-shadow: 0 0 10px #1a4184;
+      background-color: #1a4184bf; }
+  .registration-box .note {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-size: 17px; }
+    .registration-box .note .anchor {
+      margin: 0 0 0 10px;
+      text-decoration: none;
+      font-weight: 600; }
+
+@media screen and (max-width: 500px) {
+  .registration-box {
+    box-shadow: none; } }
