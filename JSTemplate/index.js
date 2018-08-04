@@ -13,11 +13,11 @@ var testResults = [
         name: 'omega3',
         generalElement: $('#omega3General'),
         graphElement: $('#omega3Graph'),
-        value: 6,
+        value: 4,
         history: {
-            first: 0,
-            second: 6,
-            third: 12
+            first: 10,
+            second: 9,
+            third: 4.9
         },
         interval: {
             poor: 0,
@@ -29,11 +29,11 @@ var testResults = [
         name: 'cellInflammation',
         generalElement: $('#cellInflammationGeneral'),
         graphElement: $('#cellInflammationGraph'),
-        value: 8,
+        value: 17,
         history: {
-            first: 0,
-            second: 6,
-            third: 3
+            first: 13,
+            second: 9,
+            third: 6
         },
         interval: {
             poor: 16,
@@ -45,7 +45,7 @@ var testResults = [
         name: 'carbBurRate',
         generalElement: $('#carbBurRateGeneral'),
         graphElement: $('#carbBurRateGraph'),
-        value: 16,
+        value: 29,
         history: {
             first: 18,
             second: 22,
@@ -93,7 +93,7 @@ var testResults = [
         name: 'cognitiveFlexibility',
         generalElement: $('#cognitiveFlexibilityGeneral'),
         graphElement: false,
-        value: 7,
+        value: 3,
         history: {
             first: 6,
             second: 4,
@@ -157,23 +157,37 @@ const resultsLogic = {
             }
 
             //Change background-color based on test.value
-            if(((test.interval.poor + value) / onePercent ) > 33) {
-                if( ((test.interval.poor + value) / onePercent ) > 66) {
-                    paintHorizontalPointerGreen(test);
-                    paintCurrentScoreGreen(test);
-                    paintVerticalPointerGreen(test);
-                    paintSummaryCurrentScoreGreen(test);
-                }
-                else{
-                    paintCurrentScoreOrange(test);
-                    paintHorizontalPointerOrange(test);
-                    paintVerticalPointerOrange(test);
-                    paintSummaryRecomendationsPink(test);
-                    paintSummaryCurrentScoreOrange(test);
-                }
-            }
-            else{
+            var barResult = (test.interval.poor + value) / onePercent;
+            if(barResult >= 0 && barResult <= 20) {
                 paintSummaryRecomendationsRed(test);
+            }
+            if(barResult > 20 && barResult <= 40){
+                paintHorizontalPointerOrange(test);
+                paintCurrentScoreOrange(test);
+                paintVerticalPointerOrange(test);
+                paintSummaryCurrentScoreOrange(test);
+                paintRadialPointerOrange(test.graphElement)
+            }
+            if(barResult > 40 && barResult <= 60) {
+                paintHorizontalPointerGray(test);
+                paintCurrentScoreGray(test);
+                paintVerticalPointerGray(test);
+                paintSummaryCurrentScoreGray(test);
+                paintRadialPointerGray(test.graphElement)
+            }
+            if(barResult > 60 && barResult <= 80) {
+                paintHorizontalPointerLightgreen(test);
+                paintCurrentScoreLightgreen(test);
+                paintVerticalPointerLightgreen(test);
+                paintSummaryCurrentScoreLightgreen(test);
+                paintRadialPointerLightgreen(test.graphElement)
+            }
+            if(barResult > 80 && barResult <= 100) {
+                paintHorizontalPointerGreen(test);
+                paintCurrentScoreGreen(test);
+                paintVerticalPointerGreen(test);
+                paintSummaryCurrentScoreGreen(test);
+                paintRadialPointerGreen(test.graphElement)
             }
 
             //Change displayed value
@@ -193,7 +207,7 @@ const resultsLogic = {
             //Change slider position based on test.value
             onePercent = ((test.interval.optimal - test.interval.poor) / 100);
             var currentResult = (test.interval.poor + value) / onePercent ;
-            var angle = -28 + (2.36 * currentResult);
+            var angle = 1.8 * currentResult;
             test.graphElement.css('transform', 'rotate('+ angle+'deg)')
         },
         getActualNormalizedResult: function getActualNormalizedResult(test, value) {
@@ -246,24 +260,36 @@ const resultsLogic = {
                 renderHistorySlider(test, getActualNormalizedResult, getOnePercent, getCurrentPercents);
             }
 
-            //Change background-color based on test.value
-            if(((test.interval.poor - value) / onePercent) > 33) {
-                if( ((test.interval.poor - value) / onePercent) > 66) {
-                    paintHorizontalPointerGreen(test);
-                    paintCurrentScoreGreen(test);
-                    paintVerticalPointerGreen(test);
-                    paintSummaryCurrentScoreGreen(test);
-                }
-                else{
-                    paintCurrentScoreOrange(test);
-                    paintHorizontalPointerOrange(test);
-                    paintVerticalPointerOrange(test);
-                    paintSummaryRecomendationsPink(test);
-                    paintSummaryCurrentScoreOrange(test);
-                }
-            }
-            else{
+            var barResult = (test.interval.poor - value) / onePercent;
+            if(barResult >= 0 && barResult <= 20) {
                 paintSummaryRecomendationsRed(test);
+            }
+            if(barResult > 20 && barResult <= 40){
+                paintHorizontalPointerOrange(test);
+                paintCurrentScoreOrange(test);
+                paintVerticalPointerOrange(test);
+                paintSummaryCurrentScoreOrange(test);
+                paintRadialPointerOrange(test.graphElement)
+            }
+            if(barResult > 40 && barResult <= 60) {
+                paintHorizontalPointerGray(test);
+                paintCurrentScoreGray(test);
+                paintVerticalPointerGray(test);
+                paintSummaryCurrentScoreGray(test);
+                paintRadialPointerGray(test.graphElement)
+            }
+            if(barResult > 60 && barResult <= 80) {
+                paintHorizontalPointerLightgreen(test);
+                paintCurrentScoreLightgreen(test);
+                paintVerticalPointerLightgreen(test);
+                paintSummaryCurrentScoreLightgreen(test);
+                paintRadialPointerLightgreen(test.graphElement)
+            }
+            if(barResult > 80 && barResult <= 100) {
+                paintHorizontalPointerGreen(test);
+                paintCurrentScoreGreen(test);
+                paintVerticalPointerGreen(test);
+                paintSummaryCurrentScoreGreen(test);
             }
 
             //Change displayed value
@@ -282,7 +308,7 @@ const resultsLogic = {
             //Change slider position based on test.value
             onePercent = ((test.interval.poor - test.interval.optimal) / 100);
             var currentResult = (test.interval.poor - value) / onePercent ;
-            var angle = -28 + (2.36 * currentResult);
+            var angle = 1.8 * currentResult;
             test.graphElement.css('transform', 'rotate('+ angle+'deg)')
         }
     },
@@ -321,23 +347,37 @@ const resultsLogic = {
             }
 
             //Change background-color based on test.value
-            if(((test.interval.poor - value) / onePercent) > 33) {
-                if( ((test.interval.poor - value) / onePercent ) > 66) {
-                    paintHorizontalPointerGreen(test);
-                    paintCurrentScoreGreen(test);
-                    paintVerticalPointerGreen(test);
-                    paintSummaryCurrentScoreGreen(test);
-                }
-                else{
-                    paintCurrentScoreOrange(test);
-                    paintHorizontalPointerOrange(test);
-                    paintVerticalPointerOrange(test);
-                    paintSummaryRecomendationsPink(test);
-                    paintSummaryCurrentScoreOrange(test);
-                }
-            }
-            else{
+            var barResult = (test.interval.poor - value) / onePercent;
+            if(barResult >= 0 && barResult <= 20) {
                 paintSummaryRecomendationsRed(test);
+            }
+            if(barResult > 20 && barResult <= 40){
+                paintHorizontalPointerOrange(test);
+                paintCurrentScoreOrange(test);
+                paintVerticalPointerOrange(test);
+                paintSummaryCurrentScoreOrange(test);
+                paintRadialPointerOrange(test.graphElement)
+            }
+            if(barResult > 40 && barResult <= 60) {
+                paintHorizontalPointerGray(test);
+                paintCurrentScoreGray(test);
+                paintVerticalPointerGray(test);
+                paintSummaryCurrentScoreGray(test);
+                paintRadialPointerGray(test.graphElement)
+            }
+            if(barResult > 60 && barResult <= 80) {
+                paintHorizontalPointerLightgreen(test);
+                paintCurrentScoreLightgreen(test);
+                paintVerticalPointerLightgreen(test);
+                paintSummaryCurrentScoreLightgreen(test);
+                paintRadialPointerLightgreen(test.graphElement)
+            }
+            if(barResult > 80 && barResult <= 100) {
+                paintHorizontalPointerGreen(test);
+                paintCurrentScoreGreen(test);
+                paintVerticalPointerGreen(test);
+                paintSummaryCurrentScoreGreen(test);
+                paintRadialPointerGreen(test.graphElement)
             }
 
             //Change displayed value
@@ -356,7 +396,7 @@ const resultsLogic = {
             //Change slider position based on test.value
             onePercent = ((test.interval.poor - test.interval.optimal) / 100);
             var currentResult = (test.interval.poor - value) / onePercent;
-            var angle = -28 + (2.36 * currentResult);
+            var angle = 1.8 * currentResult;
             test.graphElement.css('transform', 'rotate('+ angle+'deg)')
         }
     },
@@ -395,7 +435,38 @@ const resultsLogic = {
             }
 
             //Change background-color based on test.value
-            if((Math.abs(test.interval.poor - value) / onePercent) > 33) {
+            var barResult = Math.abs(test.interval.poor - value) / onePercent;
+            if(barResult >= 0 && barResult <= 20) {
+                paintSummaryRecomendationsRed(test);
+            }
+            if(barResult > 20 && barResult <= 40){
+                paintHorizontalPointerOrange(test);
+                paintCurrentScoreOrange(test);
+                paintVerticalPointerOrange(test);
+                paintSummaryCurrentScoreOrange(test);
+            }
+            if(barResult > 40 && barResult <= 60) {
+                paintHorizontalPointerGray(test);
+                paintCurrentScoreGray(test);
+                paintVerticalPointerGray(test);
+                paintSummaryCurrentScoreGray(test);
+            }
+            if(barResult > 60 && barResult <= 80) {
+                paintHorizontalPointerLightgreen(test);
+                paintCurrentScoreLightgreen(test);
+                paintVerticalPointerLightgreen(test);
+                paintSummaryCurrentScoreLightgreen(test);
+            }
+            if(barResult > 80 && barResult <= 100) {
+                paintHorizontalPointerGreen(test);
+                paintCurrentScoreGreen(test);
+                paintVerticalPointerGreen(test);
+                paintSummaryCurrentScoreGreen(test);
+            }
+
+
+
+            /*if((Math.abs(test.interval.poor - value) / onePercent) > 33) {
                 if( (Math.abs(test.interval.poor - value) / onePercent ) > 66) {
                     paintHorizontalPointerGreen(test);
                     paintCurrentScoreGreen(test);
@@ -412,7 +483,7 @@ const resultsLogic = {
             }
             else{
                 paintSummaryRecomendationsRed(test);
-            }
+            }*/
 
             //Change displayed value
             processGeneralAndSummaryValues(test);
@@ -521,9 +592,9 @@ function moveHorizontalSlider (test, currentResult) {
         .find('.scale-box__scale')
         .outerWidth();
     var pointerWidth = $(pointer).outerWidth();
+    // var onePercentOfBar = (barWidth - pointerWidth) / 100;
     var onePercentOfBar = (barWidth - pointerWidth) / 100;
-
-    pointer.css('left', ((currentResult * onePercentOfBar) - 2) + 'px');
+    pointer.css('left', ((currentResult * onePercentOfBar)) + 'px');
 }
 
 // Setting the counted position of vertical slider.
@@ -559,13 +630,17 @@ function processHistoryItem(test, getActualNormalizedResult, getOnePercentArg, g
     drawLinesBetweenHistoryItems(test, order, currentPercents);
 
     //Change background-color based on test.history.[order] value.
-    if(currentPercents > 33) {
-        if( currentPercents > 66) {
-            paintHistoryPointerGreen(test, order);
-        }
-        else{
-            paintHistoryPointerOrange(test, order);
-        }
+    if(currentPercents > 20 && currentPercents <= 40) {
+        paintHistoryPointerOrange(test, order);
+    }
+    if(currentPercents > 40 && currentPercents <= 60) {
+        paintHistoryPointerGray(test, order);
+    }
+    if(currentPercents > 60 && currentPercents <= 80) {
+        paintHistoryPointerLightgreen(test, order);
+    }
+    if(currentPercents > 80 && currentPercents <= 100) {
+        paintHistoryPointerGreen(test, order);
     }
 }
 
@@ -714,12 +789,15 @@ function processRadialSlider (test) {
         switch (test.name) {
             case 'omega3':
                 resultsLogic.omega3.radial(test);
+                setRadialValue(test);
                 break;
             case 'cellInflammation':
                 resultsLogic.cellInflammation.radial(test);
+                setRadialValue(test);
                 break;
             case 'carbBurRate':
                 resultsLogic.carbBurRate.radial(test);
+                setRadialValue(test);
                 break;
             default:
                 break;
@@ -755,15 +833,51 @@ function defaultIconsPosition () {
         icon.css('top', 'calc(50% - 36px)');
     })
 }
+
+function paintCurrentScoreOrange (test) {
+    var currentScoreElement = test.generalElement
+        .find('.test-box__score-box');
+    currentScoreElement.addClass('test-box__score-box-orange');
+}
+function paintCurrentScoreGray (test) {
+    var currentScoreElement = test.generalElement
+        .find('.test-box__score-box');
+    currentScoreElement.addClass('test-box__score-box-gray');
+}
+function paintCurrentScoreLightgreen (test) {
+    var currentScoreElement = test.generalElement
+        .find('.test-box__score-box');
+    currentScoreElement.addClass('test-box__score-box-lightgreen');
+}
 function paintCurrentScoreGreen (test) {
     var currentScoreElement = test.generalElement
         .find('.test-box__score-box');
     currentScoreElement.addClass('test-box__score-box-green');
 }
-function paintCurrentScoreOrange (test) {
-    var currentScoreElement = test.generalElement
-        .find('.test-box__score-box');
-    currentScoreElement.addClass('test-box__score-box-orange');
+
+function paintHorizontalPointerOrange (test){
+    var pointer = test.generalElement
+        .find('.test-box__scale-box')
+        .find('.scale-box__scale')
+        .find('.scale__pointer');
+
+    pointer.addClass('scale__pointer-orange');
+}
+function paintHorizontalPointerGray (test){
+    var pointer = test.generalElement
+        .find('.test-box__scale-box')
+        .find('.scale-box__scale')
+        .find('.scale__pointer');
+
+    pointer.addClass('scale__pointer-gray');
+}
+function paintHorizontalPointerLightgreen (test){
+    var pointer = test.generalElement
+        .find('.test-box__scale-box')
+        .find('.scale-box__scale')
+        .find('.scale__pointer');
+
+    pointer.addClass('scale__pointer-lightgreen');
 }
 function paintHorizontalPointerGreen (test){
     var pointer = test.generalElement
@@ -773,21 +887,44 @@ function paintHorizontalPointerGreen (test){
 
     pointer.addClass('scale__pointer-green');
 }
-function paintHorizontalPointerOrange (test){
-    var pointer = test.generalElement
-        .find('.test-box__scale-box')
-        .find('.scale-box__scale')
-        .find('.scale__pointer');
 
-    pointer.addClass('scale__pointer-orange');
+function paintVerticalPointerOrange (test){
+    var pointer = test.summaryElement.find('.current_slider').find('.slider_pointer');
+    pointer.addClass('slider_pointer__orange')
+}
+function paintVerticalPointerGray (test){
+    var pointer = test.summaryElement.find('.current_slider').find('.slider_pointer');
+    pointer.addClass('slider_pointer__gray')
+}
+function paintVerticalPointerLightgreen (test){
+    var pointer = test.summaryElement.find('.current_slider').find('.slider_pointer');
+    pointer.addClass('slider_pointer__lightgreen')
 }
 function paintVerticalPointerGreen (test){
     var pointer = test.summaryElement.find('.current_slider').find('.slider_pointer');
     pointer.addClass('slider_pointer__green')
 }
-function paintVerticalPointerOrange (test){
-    var pointer = test.summaryElement.find('.current_slider').find('.slider_pointer');
-    pointer.addClass('slider_pointer__orange')
+
+function paintSummaryCurrentScoreOrange (test) {
+    var currentScoreElement = test.summaryElement
+        .find('.diagram-item-body')
+        .find('.body_current-score')
+        .find('.slider_description');
+    currentScoreElement.addClass('slider_description__orange');
+}
+function paintSummaryCurrentScoreGray (test) {
+    var currentScoreElement = test.summaryElement
+        .find('.diagram-item-body')
+        .find('.body_current-score')
+        .find('.slider_description');
+    currentScoreElement.addClass('slider_description__gray');
+}
+function paintSummaryCurrentScoreLightgreen (test) {
+    var currentScoreElement = test.summaryElement
+        .find('.diagram-item-body')
+        .find('.body_current-score')
+        .find('.slider_description');
+    currentScoreElement.addClass('slider_description__lightgreen');
 }
 function paintSummaryCurrentScoreGreen (test) {
     var currentScoreElement = test.summaryElement
@@ -796,13 +933,7 @@ function paintSummaryCurrentScoreGreen (test) {
         .find('.slider_description');
     currentScoreElement.addClass('slider_description__green');
 }
-function paintSummaryCurrentScoreOrange (test) {
-    var currentScoreElement = test.summaryElement
-        .find('.diagram-item-body')
-        .find('.body_current-score')
-        .find('.slider_description');
-    currentScoreElement.addClass('slider_description__orange');
-}
+
 function paintSummaryRecomendationsRed (test) {
     var recomendationsElement = test.summaryElement
         .find('.body_recommendations');
@@ -813,11 +944,40 @@ function paintSummaryRecomendationsPink (test) {
         .find('.body_recommendations');
     recomendationsElement.addClass('recommendation-pink');
 }
+
+function paintHistoryPointerOrange (test, order) {
+    var pointer = test.summaryElement.find('.body-score-history-'+order).find('.slider_pointer');
+    pointer.addClass('slider_pointer__orange')
+}
+function paintHistoryPointerGray (test, order) {
+    var pointer = test.summaryElement.find('.body-score-history-'+order).find('.slider_pointer');
+    pointer.addClass('slider_pointer__gray')
+}
+function paintHistoryPointerLightgreen (test, order) {
+    var pointer = test.summaryElement.find('.body-score-history-'+order).find('.slider_pointer');
+    pointer.addClass('slider_pointer__lightgreen')
+}
 function paintHistoryPointerGreen (test, order) {
     var pointer = test.summaryElement.find('.body-score-history-'+order).find('.slider_pointer');
     pointer.addClass('slider_pointer__green')
 }
-function paintHistoryPointerOrange (test, order) {
-    var pointer = test.summaryElement.find('.body-score-history-'+order).find('.slider_pointer');
-    pointer.addClass('slider_pointer__orange')
+
+function paintRadialPointerOrange(pointerImage) {
+    pointerImage.attr('src','./fonts/orangeRadial.png')
+}
+function paintRadialPointerGray(pointerImage) {
+    pointerImage.attr('src','./fonts/grayRadial.png')
+}
+function paintRadialPointerLightgreen(pointerImage) {
+    pointerImage.attr('src','./fonts/lightgreenRadial.png')
+}
+function paintRadialPointerGreen(pointerImage) {
+    pointerImage.attr('src','./fonts/greenRadial.png')
+}
+function setRadialValue(test) {
+    test.graphElement
+        .closest('.graph__pointer')
+        .find('.result-value')
+        .find('.value')
+        .text(test.value)
 }
